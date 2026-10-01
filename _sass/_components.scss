@@ -1,0 +1,124 @@
+// Reusable components: buttons, cards, badges, checklists.
+
+.icon {
+  width: 1.25em;
+  height: 1.25em;
+  flex: none;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.btn-sm {
+  padding: 7px 14px;
+  font-size: 0.875rem;
+}
+
+.btn-lg {
+  padding: 13px 22px;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  // Paint from the border box so the gradient doesn't tile under the transparent border.
+  background: var(--brand-gradient) border-box;
+  color: #fff;
+  box-shadow: 0 8px 24px -8px rgb(83 65 245 / 0.7), inset 0 1px 0 rgb(255 255 255 / 0.25);
+
+  &:hover {
+    box-shadow: 0 12px 28px -8px rgb(83 65 245 / 0.8), inset 0 1px 0 rgb(255 255 255 / 0.25);
+  }
+}
+
+.btn-ghost {
+  background: var(--surface);
+  border-color: var(--border);
+  color: var(--text);
+  box-shadow: var(--shadow);
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--text-muted);
+  font-size: 0.8125rem;
+  font-weight: 600;
+
+  &::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.7;
+  }
+}
+
+.badge-live {
+  color: var(--success);
+  background: color-mix(in srgb, var(--success) 12%, transparent);
+
+  &::before {
+    opacity: 1;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--success) 25%, transparent);
+  }
+}
+
+.checklist li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+
+  .icon {
+    margin-top: 0.2em;
+    width: 1.1em;
+    height: 1.1em;
+    color: var(--accent-text);
+  }
+
+  & + li {
+    margin-top: 10px;
+  }
+}
+
+.footnote {
+  max-width: 760px;
+  margin: 24px auto 0;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  text-align: center;
+}

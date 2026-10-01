@@ -1,0 +1,92 @@
+// Design tokens. Brand colors come from docs/brand/appicon-gradient.svg.
+
+@use "sass:string";
+
+// Latin faces first; CJK faces are chosen per language below so Han characters
+// get the right regional glyph shapes (ja, zh-Hans and zh-Hant differ).
+$font-latin: string.unquote('-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial');
+
+:root {
+  color-scheme: light dark;
+
+  --brand-light: #8b7cff;
+  --brand: #5341f5;
+  --brand-deep: #1c1358;
+  --brand-gradient: linear-gradient(135deg, var(--brand-light) 0%, var(--brand) 45%, var(--brand-deep) 100%);
+
+  --bg: #f8f7fc;
+  --bg-tint: #f0eefb;
+  --surface: #ffffff;
+  --surface-2: #f4f2fd;
+  --text: #15132b;
+  --text-muted: #57536f;
+  --border: rgb(21 19 43 / 0.1);
+  --accent: #4b37ee;
+  --accent-text: #3e2bd6;
+  --on-accent: #ffffff;
+  --success: #1f9d55;
+  --glow-1: rgb(139 124 255 / 0.35);
+  --glow-2: rgb(83 65 245 / 0.18);
+  --shadow: 0 1px 2px rgb(21 19 43 / 0.06), 0 12px 32px -12px rgb(21 19 43 / 0.18);
+  --shadow-lg: 0 30px 80px -20px rgb(40 24 140 / 0.35), 0 2px 6px rgb(21 19 43 / 0.08);
+
+  --font-sans: #{$font-latin}, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 22px;
+  --container: 1120px;
+  --gutter: 20px;
+  --header-h: 64px;
+}
+
+@mixin dark-tokens {
+  --bg: #0b091e;
+  --bg-tint: #100d28;
+  --surface: #15122e;
+  --surface-2: #1c1840;
+  --text: #f2f0ff;
+  --text-muted: #a9a4cc;
+  --border: rgb(255 255 255 / 0.1);
+  --accent: #8b7cff;
+  --accent-text: #b2a8ff;
+  --on-accent: #0b091e;
+  --success: #4ade80;
+  --glow-1: rgb(83 65 245 / 0.45);
+  --glow-2: rgb(139 124 255 / 0.18);
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 12px 32px -12px rgb(0 0 0 / 0.6);
+  --shadow-lg: 0 30px 80px -20px rgb(0 0 0 / 0.7), 0 0 0 1px rgb(255 255 255 / 0.06);
+}
+
+:lang(ja) {
+  --font-sans: #{$font-latin}, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, "Noto Sans JP", sans-serif;
+}
+
+:lang(ko) {
+  --font-sans: #{$font-latin}, "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif;
+}
+
+:lang(zh-Hans) {
+  --font-sans: #{$font-latin}, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+}
+
+:lang(zh-Hant) {
+  --font-sans: #{$font-latin}, "PingFang TC", "Microsoft JhengHei", "Noto Sans TC", sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    @include dark-tokens;
+  }
+}
+
+:root[data-theme="dark"] {
+  @include dark-tokens;
+}
+
+@media (max-width: 480px) {
+  :root {
+    --gutter: 16px;
+  }
+}

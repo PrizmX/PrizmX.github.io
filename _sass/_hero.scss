@@ -1,0 +1,286 @@
+// Hero and the menu bar panel illustration.
+
+.hero {
+  position: relative;
+  padding-block: clamp(48px, 8vw, 104px) clamp(64px, 9vw, 120px);
+  overflow: hidden;
+  isolation: isolate;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -20% -10% auto;
+    height: 120%;
+    z-index: -1;
+    background:
+      radial-gradient(40% 50% at 78% 38%, var(--glow-1), transparent 70%),
+      radial-gradient(35% 45% at 12% 10%, var(--glow-2), transparent 70%);
+    pointer-events: none;
+  }
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  align-items: center;
+  gap: clamp(40px, 6vw, 80px);
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+
+.hero h1 {
+  font-size: clamp(2.375rem, 4.2vw + 1rem, 4rem);
+  letter-spacing: -0.035em;
+  background: linear-gradient(180deg, var(--text) 30%, color-mix(in srgb, var(--text) 70%, var(--accent)) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+// Japanese headlines carry long katakana words; a smaller size keeps the
+// <wbr>-separated phrases from wrapping one per line on phones.
+.hero h1:lang(ja) {
+  font-size: clamp(2rem, 3.6vw + 0.9rem, 3.25rem);
+}
+
+.lead {
+  margin-top: 20px;
+  max-width: 34em;
+  color: var(--text-muted);
+  font-size: clamp(1.0625rem, 0.5vw + 0.95rem, 1.25rem);
+
+  @media (max-width: 900px) {
+    margin-inline: auto;
+  }
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+
+  @media (max-width: 900px) {
+    justify-content: center;
+  }
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.hero-note {
+  margin-top: 16px;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+// Menu bar panel illustration — sized like the real 320pt panel.
+
+.hero-visual {
+  position: relative;
+  justify-self: center;
+  width: min(100%, 380px);
+  font-size: 13px;
+  line-height: 1.35;
+  user-select: none;
+
+  @media (max-width: 900px) {
+    text-align: start;
+  }
+}
+
+.mock-menubar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+  height: 28px;
+  padding-inline: 12px;
+  margin-bottom: 8px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--text);
+}
+
+.mock-menubar-glyph {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 22px;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--text) 12%, transparent);
+}
+
+.mock-menubar-dots {
+  display: flex;
+  gap: 10px;
+
+  i {
+    width: 14px;
+    height: 10px;
+    border-radius: 3px;
+    background: color-mix(in srgb, var(--text) 30%, transparent);
+  }
+}
+
+.mock-menubar-clock {
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.mock-panel {
+  display: grid;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  color: var(--text);
+}
+
+.mock-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  strong {
+    display: block;
+    font-size: 14px;
+  }
+}
+
+.mock-caption {
+  display: block;
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+.mock-switch {
+  position: relative;
+  width: 38px;
+  height: 22px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--text) 18%, transparent);
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 0.3);
+  }
+
+  &.is-on {
+    background: var(--brand);
+
+    &::after {
+      left: 18px;
+    }
+  }
+
+  &.is-small {
+    width: 30px;
+    height: 18px;
+
+    &::after {
+      width: 14px;
+      height: 14px;
+    }
+
+    &.is-on::after {
+      left: 14px;
+    }
+  }
+}
+
+.mock-seg {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 2px;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--text) 8%, transparent);
+
+  span {
+    padding: 4px 0;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .is-on {
+    background: var(--surface);
+    box-shadow: 0 1px 3px rgb(0 0 0 / 0.15);
+  }
+}
+
+.mock-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mock-value {
+  color: var(--text-muted);
+}
+
+.mock-speed {
+  display: flex;
+  justify-content: space-between;
+
+  small {
+    color: var(--text-muted);
+    font-size: 11px;
+  }
+
+  b {
+    font-weight: 500;
+  }
+}
+
+.mock-wave {
+  width: 100%;
+  height: 72px;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--text) 4%, transparent);
+}
+
+.mock-wave-axis {
+  stroke: var(--border);
+  stroke-width: 1;
+}
+
+.mock-wave-down {
+  fill: color-mix(in srgb, var(--brand-light) 55%, transparent);
+  stroke: var(--brand-light);
+  stroke-width: 1.2;
+}
+
+.mock-wave-up {
+  fill: color-mix(in srgb, #2dd4bf 40%, transparent);
+  stroke: #2dd4bf;
+  stroke-width: 1.2;
+}
+
+.mock-actions li {
+  padding: 3px 0;
+
+  &:last-child {
+    color: #e5484d;
+  }
+}

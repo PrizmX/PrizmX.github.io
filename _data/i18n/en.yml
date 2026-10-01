@@ -1,0 +1,248 @@
+# English copy. Keys mirror _data/i18n/zh-Hans.yml one-to-one.
+# Strings rendered with `markdownify` may contain inline Markdown.
+
+nav:
+  skip: Skip to content
+  features: Features
+  protocols: Protocols
+  editions: Editions
+  faq: FAQ
+  github: GitHub
+  download: Download
+  primary_label: Primary
+  language_label: Language
+
+hero:
+  eyebrow: Community Edition · Free & open source
+  title: The native proxy client for Apple platforms
+  lead: >-
+    Bring your Clash or sing-box profile, route traffic by rule through TUN or
+    system proxy, and see every connection — all from the Mac menu bar.
+  cta_download: Download for Mac
+  cta_github: View source on GitHub
+  note: Requires macOS %min% or later · Signed and notarized
+  mock_label: Illustration of the PrizmX menu bar panel showing connection status, outbound mode, system proxy, profile, node and live traffic.
+
+mock:
+  status: Connected
+  uptime: "01:02:11"
+  modes: [Rule, Global, Direct]
+  system_proxy: System Proxy
+  profile: Profile
+  profile_value: Clash-Main
+  node: Node
+  node_value: HK-01 · 32 ms
+  upload: Upload
+  upload_value: 86 KB/s
+  download: Download
+  download_value: 1.24 MB/s
+  actions: [Open Console…, Inspector…, Settings…, Quit PrizmX]
+
+features:
+  eyebrow: Features
+  heading: Everything you need, one click away
+  intro: >-
+    PrizmX lives in the menu bar for daily use and opens a full console when
+    you want to dig into policies, rules and traffic.
+  items:
+    - icon: menubar
+      title: Menu bar first
+      text: >-
+        Connect, switch between Rule, Global and Direct, toggle System Proxy,
+        pick a node and watch live speed without opening a window.
+    - icon: profile
+      title: Clash & sing-box profiles
+      text: >-
+        Import Clash YAML or sing-box JSON from a file or a subscription URL,
+        and keep subscriptions fresh from inside the app.
+    - icon: tunnel
+      title: TUN and System Proxy
+      text: >-
+        Capture every app with a FakeIP TUN in a Packet Tunnel system
+        extension, or use System Proxy on a mixed HTTP + SOCKS5 port. Allow LAN
+        to share it with other devices.
+    - icon: route
+      title: Rule-based routing
+      text: >-
+        Rules send each connection to a policy. Policy groups — select,
+        url-test, fallback and load-balance — pick the node and keep latency
+        in check.
+    - icon: inspect
+      title: Inspector
+      text: >-
+        Browse recent and active connections with the app that opened them,
+        the matched policy, protocol, duration and bytes in each direction.
+    - icon: chart
+      title: Traffic & latency
+      text: >-
+        Daily and monthly totals, top consumers, and path latency split into
+        internet, DNS and proxy so you can tell where slowness comes from.
+
+native:
+  eyebrow: Under the hood
+  heading: Built natively, down to the packet
+  intro: >-
+    No Electron shell and no embedded third-party core. Protocols, rules, the
+    engine and the TCP/IP stack are written in Swift and shared across Apple
+    platforms.
+  points:
+    - title: Swift 6 from end to end
+      text: >-
+        SwiftUI on the surface, strict concurrency underneath. One codebase
+        powers the Mac app today and the iOS app next.
+    - title: SwiftTCP userspace stack
+      text: >-
+        A purpose-built TCP/IP stack for Network Extension with a zero-copy
+        packet path, CUBIC or BBR congestion control and lock-free per-flow
+        event loops.
+    - title: Sandboxed and notarized
+      text: >-
+        A sandboxed host app plus a Packet Tunnel system extension, shipped as
+        a signed and Apple-notarized DMG straight from CI.
+    - title: Open core, Apache 2.0
+      text: >-
+        The app, the protocol engine and the network stack are public on
+        GitHub. Read it, build it, or contribute.
+  repos_label: Source repositories
+
+protocols:
+  eyebrow: Protocols
+  heading: Works with the servers you already use
+  intro: >-
+    Clash YAML and sing-box JSON both import the outbounds below. VLESS is the
+    framing; TLS and REALITY are transports; Vision is a VLESS flow — they
+    combine freely.
+  caption: Supported outbound protocols
+  columns:
+    protocol: Protocol
+    details: Transports & options
+    tcp: TCP
+    udp: UDP
+  supported: "Yes"
+  unsupported: "No"
+  rows:
+    - name: Shadowsocks
+      details: "AEAD ciphers `aes-128-gcm` and `aes-256-gcm`, native TCP and UDP"
+      tcp: true
+      udp: true
+    - name: VLESS
+      details: "TCP, TLS or REALITY · `xtls-rprx-vision` flow · UDP over stream"
+      tcp: true
+      udp: true
+    - name: Trojan
+      details: TLS with SNI
+      tcp: true
+      udp: false
+    - name: AnyTLS
+      details: TLS 1.3 with SNI and an idle session pool
+      tcp: true
+      udp: false
+    - name: Direct
+      details: Bypass the proxy for matched traffic
+      tcp: true
+      udp: true
+  not_yet: >-
+    Not supported yet: VMess, Hysteria, TUIC, WireGuard, Shadowsocks 2022,
+    WebSocket / gRPC transports and Mux. Nodes of these types are skipped and
+    the rest of your profile still loads.
+
+editions:
+  eyebrow: Editions
+  heading: One engine, every Apple device
+  intro: >-
+    The Community Edition for Mac is available today. An App Store edition for
+    iPhone and Mac is built on the same open core.
+  items:
+    - name: PrizmX Community
+      status: Available now
+      available: true
+      platform: macOS %min%+
+      price: Free · Apache 2.0
+      points:
+        - Menu bar control and full console
+        - TUN, System Proxy and Allow LAN
+        - Rules, policy groups and subscriptions
+        - Inspector, traffic and latency stats
+      cta: Download for Mac
+    - name: PrizmX for App Store
+      status: In development
+      available: false
+      platform: iPhone & Mac
+      price: One listing across iOS and macOS
+      points:
+        - Everything in Community
+        - Native iPhone app with Packet Tunnel
+        - HTTP capture, decrypt and rewrite (planned)
+        - Distributed through the App Store
+      cta: Follow on GitHub
+
+faq:
+  eyebrow: FAQ
+  heading: Frequently asked questions
+  items:
+    - q: Is PrizmX free?
+      a: >-
+        Yes. PrizmX Community for Mac is free and open source under the
+        [Apache License 2.0](https://github.com/PrizmX/PrizmX/blob/main/LICENSE).
+    - q: What do I need to run it?
+      a: >-
+        A Mac running macOS %min% or later. Download the signed and notarized
+        DMG from [GitHub Releases](https://github.com/PrizmX/PrizmX/releases/latest)
+        and drag PrizmX into Applications.
+    - q: How do I enable the tunnel?
+      a: >-
+        The first time you turn on TUN, macOS asks to allow the PrizmX Tunnel
+        system extension. Open **System Settings → General → Login Items &
+        Extensions → Network Extensions** and switch on **PrizmX Tunnel**.
+    - q: Can I use my existing Clash subscription?
+      a: >-
+        Yes. PrizmX reads Clash YAML and sing-box JSON from a local file or a
+        subscription URL. Nodes with unsupported protocols are skipped; rules,
+        policy groups and the remaining nodes load as usual.
+    - q: What is the difference between TUN and System Proxy?
+      a: >-
+        System Proxy serves apps that honor macOS proxy settings through a
+        mixed port (7890 by default) that speaks HTTP CONNECT and SOCKS5. TUN
+        routes all traffic — including apps that ignore proxy settings —
+        through a Packet Tunnel with FakeIP DNS. Use either one or both.
+    - q: Does PrizmX support VMess, Hysteria or WireGuard?
+      a: >-
+        Not yet. Today PrizmX supports Shadowsocks, VLESS (TLS, REALITY,
+        Vision), Trojan and AnyTLS. Track progress in
+        [PrizmX-Foundation](https://github.com/PrizmX/PrizmX-Foundation).
+    - q: Does PrizmX decrypt HTTPS traffic?
+      a: >-
+        No. The Community Edition shows connection metadata — app, host,
+        policy, protocol and bytes — but never decrypts or rewrites traffic.
+        HTTP capture, decrypt and rewrite are planned for the App Store edition.
+    - q: Is there an iPhone version?
+      a: >-
+        It is in development as part of the App Store edition and shares the
+        same core as the Mac app. Watch the
+        [PrizmX organization on GitHub](https://github.com/PrizmX) for updates.
+
+cta:
+  heading: Take control of your traffic
+  text: Free, open source and native to your Mac.
+
+footer:
+  tagline: A native proxy client for Apple platforms.
+  product: Product
+  source: Source
+  releases: Releases
+  license: License
+  license_note: Community Edition is released under the Apache License 2.0.
+  rights: PrizmX
+
+legal:
+  heading: "Legal"
+  privacy: "Privacy Policy"
+  terms: "Terms of Service"
+  last_updated: "Last updated"
+  translation_note: "This translation is provided for convenience. If it differs from the English version, the English version prevails."
+  read_english: "Read the English version"
+
+not_found:
+  title: Page not found
+  text: The page you are looking for does not exist or has moved.
+  back: Back to home

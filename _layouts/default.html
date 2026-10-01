@@ -1,0 +1,15 @@
+<!doctype html>
+{%- include locale.html -%}
+<html lang="{{ page.lang | default: site.lang }}">
+<head>
+{% include head.html %}
+</head>
+<body>
+  <a class="skip-link" href="#main">{{ t.nav.skip }}</a>
+  {% include header.html %}
+  <main id="main">
+    {{ content }}
+  </main>
+  {% include footer.html %}
+</body>
+</html>

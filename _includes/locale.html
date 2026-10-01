@@ -1,0 +1,20 @@
+{%- comment -%}
+  Resolves per-language context for the current page:
+    t         copy for page.lang from _data/i18n
+    home_url  home page in the same language
+    privacy_url, terms_url
+              legal pages in the same language, else the default language
+    min_macos minimum macOS version shown in copy (%min% placeholder)
+{%- endcomment -%}
+{%- assign lang = page.lang | default: site.lang -%}
+{%- assign t = site.data.i18n[lang] -%}
+{%- assign home_page = site.pages | where: "ref", "home" | where: "lang", lang | first -%}
+{%- assign home_url = home_page.url | default: "/" | relative_url -%}
+{%- assign min_macos = site.prizmx.min_macos -%}
+{%- assign default_lang = site.languages.first.code -%}
+{%- assign privacy_page = site.pages | where: "ref", "privacy" | where: "lang", lang | first -%}
+{%- unless privacy_page -%}{%- assign privacy_page = site.pages | where: "ref", "privacy" | where: "lang", default_lang | first -%}{%- endunless -%}
+{%- assign terms_page = site.pages | where: "ref", "terms" | where: "lang", lang | first -%}
+{%- unless terms_page -%}{%- assign terms_page = site.pages | where: "ref", "terms" | where: "lang", default_lang | first -%}{%- endunless -%}
+{%- assign privacy_url = privacy_page.url | relative_url -%}
+{%- assign terms_url = terms_page.url | relative_url -%}

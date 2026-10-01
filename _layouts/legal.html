@@ -1,0 +1,23 @@
+---
+layout: default
+---
+{%- include locale.html -%}
+{%- if page.ref == "privacy" %}{% assign related_page = terms_url %}{% assign related_label = t.legal.terms %}
+{%- else %}{% assign related_page = privacy_url %}{% assign related_label = t.legal.privacy %}{% endif -%}
+<article class="legal">
+  <div class="container legal-inner">
+    <header class="legal-head">
+      <p class="eyebrow">{{ t.legal.heading }}</p>
+      <h1>{{ page.title }}</h1>
+      <p class="legal-meta">{{ t.legal.last_updated }}: <time datetime="{{ page.last_updated | date: '%Y-%m-%d' }}">{{ page.last_updated | date: "%Y-%m-%d" }}</time></p>
+      {%- if lang != default_lang %}
+      {%- assign original = site.pages | where: "ref", page.ref | where: "lang", default_lang | first %}
+      <p class="legal-note">{{ t.legal.translation_note }} <a href="{{ original.url | relative_url }}" hreflang="{{ default_lang }}">{{ t.legal.read_english }}</a></p>
+      {%- endif %}
+    </header>
+    <div class="prose">
+      {{ content }}
+    </div>
+    <p class="legal-related"><a href="{{ related_page }}">{{ related_label }} →</a></p>
+  </div>
+</article>

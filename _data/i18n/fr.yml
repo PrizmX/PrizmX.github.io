@@ -1,0 +1,265 @@
+# Textes en français. Les clés reflètent _data/i18n/en.yml une à une.
+# Les champs rendus avec `markdownify` peuvent contenir du Markdown en ligne.
+
+nav:
+  skip: Aller au contenu
+  features: Fonctionnalités
+  protocols: Protocoles
+  editions: Éditions
+  faq: FAQ
+  github: GitHub
+  download: Télécharger
+  primary_label: Principale
+  language_label: Langue
+
+hero:
+  eyebrow: Édition Communauté · Gratuit et open source
+  title: Le client proxy natif pour les plateformes Apple
+  lead: >-
+    Importez votre profil Clash ou sing-box, routez le trafic par règles via
+    TUN ou le proxy système, et visualisez chaque connexion — le tout depuis la
+    barre des menus du Mac.
+  cta_download: Télécharger pour Mac
+  cta_github: Voir le code source sur GitHub
+  note: Nécessite macOS %min% ou version ultérieure · Signé et notarisé
+  mock_label: >-
+    Illustration du panneau de PrizmX dans la barre des menus, montrant l’état
+    de la connexion, le mode de sortie, le proxy système, le profil, le nœud et
+    le trafic en temps réel.
+
+mock:
+  status: Connecté
+  uptime: "01:02:11"
+  modes: [Rule, Global, Direct]
+  system_proxy: System Proxy
+  profile: Profile
+  profile_value: Clash-Main
+  node: Node
+  node_value: HK-01 · 32 ms
+  upload: Upload
+  upload_value: 86 KB/s
+  download: Download
+  download_value: 1.24 MB/s
+  actions: [Open Console…, Inspector…, Settings…, Quit PrizmX]
+
+features:
+  eyebrow: Fonctionnalités
+  heading: Tout ce qu’il vous faut, en un clic
+  intro: >-
+    Au quotidien, PrizmX se loge dans la barre des menus, et ouvre une console
+    complète lorsque vous voulez examiner en détail les politiques, les règles
+    et le trafic.
+  items:
+    - icon: menubar
+      title: Priorité à la barre des menus
+      text: >-
+        Connectez-vous, basculez entre Rule, Global et Direct, activez ou
+        désactivez le proxy système, choisissez un nœud et suivez le débit en
+        temps réel sans ouvrir de fenêtre.
+    - icon: profile
+      title: Profils Clash et sing-box
+      text: >-
+        Importez des profils Clash YAML ou sing-box JSON depuis un fichier ou
+        une URL d’abonnement, et gardez vos abonnements à jour directement dans
+        l’app.
+    - icon: tunnel
+      title: TUN et proxy système
+      text: >-
+        Capturez le trafic de toutes les apps avec un TUN FakeIP dans une
+        extension système Packet Tunnel, ou utilisez le proxy système sur un
+        port mixte HTTP + SOCKS5. Activez Allow LAN pour le partager avec
+        d’autres appareils.
+    - icon: route
+      title: Routage par règles
+      text: >-
+        Les règles dirigent chaque connexion vers une politique. Les groupes de
+        politiques — select, url-test, fallback et load-balance — choisissent le
+        nœud et maîtrisent la latence.
+    - icon: inspect
+      title: Inspector
+      text: >-
+        Parcourez les connexions récentes et actives, avec l’app qui les a
+        ouvertes, la politique correspondante, le protocole, la durée et les
+        octets dans chaque sens.
+    - icon: chart
+      title: Trafic et latence
+      text: >-
+        Totaux quotidiens et mensuels, principaux consommateurs, et latence du
+        trajet décomposée en Internet, DNS et proxy pour identifier l’origine
+        des ralentissements.
+
+native:
+  eyebrow: Sous le capot
+  heading: Conçu en natif, jusqu’au paquet
+  intro: >-
+    Pas d’enveloppe Electron, pas de cœur tiers embarqué. Les protocoles, les
+    règles, le moteur et la pile TCP/IP sont écrits en Swift et partagés entre
+    les plateformes Apple.
+  points:
+    - title: Swift 6 de bout en bout
+      text: >-
+        SwiftUI en surface, concurrence stricte en profondeur. Une seule base de
+        code fait tourner l’app Mac aujourd’hui, puis l’app iOS.
+    - title: Pile SwiftTCP en espace utilisateur
+      text: >-
+        Une pile TCP/IP conçue sur mesure pour Network Extension, avec un chemin
+        de paquets sans copie, un contrôle de congestion CUBIC ou BBR et des
+        boucles d’événements sans verrou par flux.
+    - title: Sandbox et notarisation
+      text: >-
+        Une app hôte en sandbox associée à une extension système Packet Tunnel,
+        livrée directement depuis la CI sous forme de DMG signé et notarisé par
+        Apple.
+    - title: Cœur open source, Apache 2.0
+      text: >-
+        L’app, le moteur de protocoles et la pile réseau sont publics sur
+        GitHub. Lisez le code, compilez-le ou contribuez.
+  repos_label: Dépôts de code source
+
+protocols:
+  eyebrow: Protocoles
+  heading: Compatible avec les serveurs que vous utilisez déjà
+  intro: >-
+    Les protocoles sortants ci-dessous s’importent aussi bien depuis Clash YAML
+    que depuis sing-box JSON. VLESS fournit le format de trame ; TLS et REALITY
+    sont des transports ; Vision est un flow VLESS — ils se combinent librement.
+  caption: Protocoles sortants pris en charge
+  columns:
+    protocol: Protocole
+    details: Transports et options
+    tcp: TCP
+    udp: UDP
+  supported: "Oui"
+  unsupported: "Non"
+  rows:
+    - name: Shadowsocks
+      details: "Chiffrements AEAD `aes-128-gcm` et `aes-256-gcm`, TCP et UDP natifs"
+      tcp: true
+      udp: true
+    - name: VLESS
+      details: "TCP, TLS ou REALITY · flow `xtls-rprx-vision` · UDP over stream"
+      tcp: true
+      udp: true
+    - name: Trojan
+      details: TLS avec SNI
+      tcp: true
+      udp: false
+    - name: AnyTLS
+      details: TLS 1.3 avec SNI et un pool de sessions inactives
+      tcp: true
+      udp: false
+    - name: Direct
+      details: Contourne le proxy pour le trafic correspondant
+      tcp: true
+      udp: true
+  not_yet: >-
+    Pas encore pris en charge : VMess, Hysteria, TUIC, WireGuard, Shadowsocks
+    2022, les transports WebSocket / gRPC et Mux. Les nœuds de ces types sont
+    ignorés et le reste de votre profil se charge normalement.
+
+editions:
+  eyebrow: Éditions
+  heading: Un seul moteur, tous vos appareils Apple
+  intro: >-
+    L’édition Communauté pour Mac est disponible dès aujourd’hui. Une édition
+    App Store pour iPhone et Mac repose sur le même cœur open source.
+  items:
+    - name: PrizmX Communauté
+      status: Disponible dès maintenant
+      available: true
+      platform: macOS %min%+
+      price: Gratuit · Apache 2.0
+      points:
+        - Contrôle depuis la barre des menus et console complète
+        - TUN, proxy système et Allow LAN
+        - Règles, groupes de politiques et abonnements
+        - Inspector, statistiques de trafic et de latence
+      cta: Télécharger pour Mac
+    - name: PrizmX pour l’App Store
+      status: En développement
+      available: false
+      platform: iPhone et Mac
+      price: Une seule fiche pour iOS et macOS
+      points:
+        - Tout ce qu’offre l’édition Communauté
+        - App iPhone native avec Packet Tunnel
+        - Capture, déchiffrement et réécriture HTTP (prévus)
+        - Distribution via l’App Store
+      cta: Suivre sur GitHub
+
+faq:
+  eyebrow: FAQ
+  heading: Questions fréquentes
+  items:
+    - q: PrizmX est-il gratuit ?
+      a: >-
+        Oui. PrizmX Communauté pour Mac est gratuit et open source, distribué
+        sous [Apache License 2.0](https://github.com/PrizmX/PrizmX/blob/main/LICENSE).
+    - q: De quoi ai-je besoin pour l’utiliser ?
+      a: >-
+        D’un Mac équipé de macOS %min% ou version ultérieure. Téléchargez le DMG
+        signé et notarisé depuis
+        [GitHub Releases](https://github.com/PrizmX/PrizmX/releases/latest),
+        puis faites glisser PrizmX dans le dossier Applications.
+    - q: Comment activer le tunnel ?
+      a: >-
+        La première fois que vous activez TUN, macOS vous demande d’autoriser
+        l’extension système PrizmX Tunnel. Ouvrez **Réglages Système → Général →
+        Ouverture et extensions → Extensions réseau** et activez
+        **PrizmX Tunnel**.
+    - q: Puis-je utiliser mon abonnement Clash existant ?
+      a: >-
+        Oui. PrizmX lit les profils Clash YAML et sing-box JSON depuis un
+        fichier local ou une URL d’abonnement. Les nœuds utilisant des
+        protocoles non pris en charge sont ignorés ; les règles, les groupes de
+        politiques et les autres nœuds se chargent normalement.
+    - q: Quelle est la différence entre TUN et le proxy système ?
+      a: >-
+        Le proxy système dessert les apps qui respectent les réglages proxy de
+        macOS, via un port mixte (7890 par défaut) qui gère HTTP CONNECT et
+        SOCKS5. TUN fait passer tout le trafic — y compris celui des apps qui
+        ignorent les réglages proxy — par un Packet Tunnel avec DNS FakeIP.
+        Utilisez l’un, l’autre ou les deux.
+    - q: PrizmX prend-il en charge VMess, Hysteria ou WireGuard ?
+      a: >-
+        Pas encore. PrizmX prend actuellement en charge Shadowsocks, VLESS (TLS,
+        REALITY, Vision), Trojan et AnyTLS. Suivez l’avancement sur
+        [PrizmX-Foundation](https://github.com/PrizmX/PrizmX-Foundation).
+    - q: PrizmX déchiffre-t-il le trafic HTTPS ?
+      a: >-
+        Non. L’édition Communauté affiche les métadonnées des connexions — app,
+        hôte, politique, protocole et octets — mais ne déchiffre ni ne réécrit
+        jamais le trafic. La capture, le déchiffrement et la réécriture HTTP
+        sont prévus pour l’édition App Store.
+    - q: Existe-t-il une version iPhone ?
+      a: >-
+        Elle est en cours de développement dans le cadre de l’édition App Store
+        et partage le même cœur que l’app Mac. Suivez
+        [l’organisation PrizmX sur GitHub](https://github.com/PrizmX) pour
+        connaître les nouveautés.
+
+cta:
+  heading: Prenez le contrôle de votre trafic
+  text: Gratuit, open source et natif sur votre Mac.
+
+footer:
+  tagline: Un client proxy natif pour les plateformes Apple.
+  product: Produit
+  source: Code source
+  releases: Versions
+  license: Licence
+  license_note: L’édition Communauté est distribuée sous Apache License 2.0.
+  rights: PrizmX
+
+legal:
+  heading: "Mentions légales"
+  privacy: "Politique de confidentialité"
+  terms: "Conditions d’utilisation"
+  last_updated: "Dernière mise à jour"
+  translation_note: "Cette traduction est fournie à titre indicatif. En cas de divergence, la version anglaise prévaut."
+  read_english: "Lire la version anglaise"
+
+not_found:
+  title: Page introuvable
+  text: La page que vous recherchez n’existe pas ou a été déplacée.
+  back: Retour à l’accueil

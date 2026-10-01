@@ -1,0 +1,19 @@
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="{{ home_url }}">
+      {% include logo.svg %}
+      <span>PrizmX</span>
+    </a>
+    <nav class="site-nav" aria-label="{{ t.nav.primary_label }}">
+      <a href="{{ home_url }}#features">{{ t.nav.features }}</a>
+      <a href="{{ home_url }}#protocols">{{ t.nav.protocols }}</a>
+      <a href="{{ home_url }}#editions">{{ t.nav.editions }}</a>
+      <a href="{{ home_url }}#faq">{{ t.nav.faq }}</a>
+      <a href="{{ site.prizmx.org_url }}" rel="noopener">{{ t.nav.github }}</a>
+    </nav>
+    <div class="header-actions">
+      {%- include language-menu.html %}
+      <a class="btn btn-primary btn-sm" href="{{ site.prizmx.download_url }}" rel="noopener">{{ t.nav.download }}</a>
+    </div>
+  </div>
+</header>

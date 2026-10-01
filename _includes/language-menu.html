@@ -1,0 +1,48 @@
+{%- comment -%}
+  Language dropdown. Each entry links to the translation of this page when one
+  exists, otherwise to that language's home page. Plain links keep every
+  language crawlable; <details> works without JavaScript, and the script only
+  adds closing on outside click and Escape.
+{%- endcomment -%}
+{%- assign current_language = site.languages | where: "code", lang | first -%}
+<details class="lang-menu">
+  <summary>
+    <span class="visually-hidden">{{ t.nav.language_label }}:</span>
+    {% include icons/globe.svg %}
+    <span class="lang-menu-current" lang="{{ lang }}">{{ current_language.label }}</span>
+    {% include icons/chevron-down.svg %}
+  </summary>
+  <ul class="lang-menu-list">
+    {%- for language in site.languages -%}
+      {%- assign target = nil -%}
+      {%- if page.ref -%}
+        {%- assign target = site.pages | where: "ref", page.ref | where: "lang", language.code | first -%}
+      {%- endif -%}
+      {%- unless target -%}
+        {%- assign target = site.pages | where: "ref", "home" | where: "lang", language.code | first -%}
+      {%- endunless -%}
+      {%- if target %}
+    <li>
+      <a href="{{ target.url | relative_url }}" hreflang="{{ language.code }}" lang="{{ language.code }}"{% if language.code == lang %} aria-current="page"{% endif %}>
+        {{- language.label -}}
+        {%- if language.code == lang %}{% include icons/check.svg %}{% endif -%}
+      </a>
+    </li>
+      {%- endif -%}
+    {%- endfor %}
+  </ul>
+</details>
+<script>
+  document.addEventListener("click", (event) => {
+    for (const menu of document.querySelectorAll("details.lang-menu[open]")) {
+      if (!menu.contains(event.target)) menu.open = false;
+    }
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") return;
+    for (const menu of document.querySelectorAll("details.lang-menu[open]")) {
+      menu.open = false;
+      menu.querySelector("summary").focus();
+    }
+  });
+</script>

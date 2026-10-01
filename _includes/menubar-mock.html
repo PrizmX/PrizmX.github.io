@@ -1,0 +1,52 @@
+{%- comment -%}
+  HTML/CSS illustration of the menu bar panel (PrizmX/MacUI/MenuBarPanel.swift).
+  Exposed to assistive tech as a single image with a text description.
+{%- endcomment -%}
+{%- assign m = t.mock -%}
+<div class="hero-visual" role="img" aria-label="{{ t.hero.mock_label }}">
+  <div class="mock-menubar">
+    <span class="mock-menubar-glyph">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M9.8 5.245 L14.2 5.245 L19.8 14.944 L17.6 18.755 L6.4 18.755 L4.2 14.944 Z"/><path d="M12 6.515 L17.6 16.215 L6.4 16.215 Z"/></svg>
+    </span>
+    <span class="mock-menubar-dots"><i></i><i></i><i></i></span>
+    <span class="mock-menubar-clock">9:41</span>
+  </div>
+  <div class="mock-panel">
+    <div class="mock-head">
+      <div>
+        <strong>PrizmX</strong>
+        <span class="mock-caption">{{ m.status }} · {{ m.modes[0] }}</span>
+        <span class="mock-caption mono">{{ m.uptime }}</span>
+      </div>
+      <span class="mock-switch is-on"></span>
+    </div>
+    <div class="mock-seg">
+      {%- for mode in m.modes %}
+      <span{% if forloop.first %} class="is-on"{% endif %}>{{ mode }}</span>
+      {%- endfor %}
+    </div>
+    <div class="mock-row">
+      <span>{{ m.system_proxy }}</span>
+      <span class="mock-switch is-on is-small"></span>
+    </div>
+    <hr>
+    <div class="mock-row"><span>{{ m.profile }}</span><span class="mock-value">{{ m.profile_value }}</span></div>
+    <div class="mock-row"><span>{{ m.node }}</span><span class="mock-value">{{ m.node_value }}</span></div>
+    <hr>
+    <div class="mock-speed">
+      <span><small>{{ m.upload }}</small> <b class="mono">{{ m.upload_value }}</b></span>
+      <span><small>{{ m.download }}</small> <b class="mono">{{ m.download_value }}</b></span>
+    </div>
+    <svg class="mock-wave" viewBox="0 0 280 72" preserveAspectRatio="none" focusable="false">
+      <line x1="0" y1="36" x2="280" y2="36" class="mock-wave-axis"/>
+      <path class="mock-wave-down" d="M0 36 L0 30 C20 26 30 14 50 18 S80 30 100 22 S130 6 150 12 S180 28 200 20 S240 4 260 14 L280 10 L280 36 Z"/>
+      <path class="mock-wave-up" d="M0 36 L0 40 C20 44 30 42 50 46 S80 40 100 44 S130 52 150 46 S180 40 200 44 S240 50 260 44 L280 46 L280 36 Z"/>
+    </svg>
+    <hr>
+    <ul class="mock-actions">
+      {%- for action in m.actions %}
+      <li>{{ action }}</li>
+      {%- endfor %}
+    </ul>
+  </div>
+</div>

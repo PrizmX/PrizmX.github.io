@@ -1,0 +1,28 @@
+<section class="section section-tinted" id="editions" aria-labelledby="editions-title">
+  <div class="container">
+    <header class="section-head">
+      <p class="eyebrow">{{ t.editions.eyebrow }}</p>
+      <h2 id="editions-title">{{ t.editions.heading }}</h2>
+      <p>{{ t.editions.intro }}</p>
+    </header>
+    <div class="edition-grid">
+      {%- for edition in t.editions.items %}
+      <article class="card edition{% if edition.available %} is-available{% endif %}">
+        <p class="badge{% if edition.available %} badge-live{% endif %}">{{ edition.status }}</p>
+        <h3>{{ edition.name }}</h3>
+        <p class="edition-meta">{{ edition.platform | replace: "%min%", min_macos }} · {{ edition.price }}</p>
+        <ul class="checklist">
+          {%- for point in edition.points %}
+          <li>{% include icons/check.svg %}{{ point }}</li>
+          {%- endfor %}
+        </ul>
+        {%- if edition.available %}
+        <a class="btn btn-primary" href="{{ site.prizmx.download_url }}" rel="noopener">{% include icons/download.svg %}{{ edition.cta }}</a>
+        {%- else %}
+        <a class="btn btn-ghost" href="{{ site.prizmx.org_url }}" rel="noopener">{% include icons/github.svg %}{{ edition.cta }}</a>
+        {%- endif %}
+      </article>
+      {%- endfor %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,212 @@
+# 한국어 문구. 키는 _data/i18n/en.yml과 일대일로 대응합니다.
+# `markdownify`로 렌더링되는 필드에는 인라인 Markdown을 쓸 수 있습니다.
+# 각 단락은 한 줄로 작성하세요. YAML 접힘 블록은 줄바꿈 위치에 공백을 넣습니다.
+# 제목은 띄어쓰기 단위로 줄바꿈되므로(word-break: keep-all) 일반적인 띄어쓰기를 지키세요.
+
+nav:
+  skip: 본문으로 건너뛰기
+  features: 기능
+  protocols: 프로토콜
+  editions: 에디션
+  faq: FAQ
+  github: GitHub
+  download: 다운로드
+  primary_label: 주 메뉴
+  language_label: 언어
+
+hero:
+  eyebrow: 커뮤니티 에디션 · 무료 오픈 소스
+  title: Apple 플랫폼을 위한 네이티브 프록시 클라이언트
+  lead: >-
+    Clash 또는 sing-box 프로필을 가져와 TUN이나 시스템 프록시를 통해 규칙에 따라 트래픽을 라우팅하고, 모든 연결을 확인하세요. 이 모든 것을 Mac 메뉴 막대에서 할 수 있습니다.
+  cta_download: Mac용 다운로드
+  cta_github: GitHub에서 소스 보기
+  note: macOS %min% 이상 필요 · 서명 및 공증 완료
+  mock_label: 연결 상태, 아웃바운드 모드, 시스템 프록시, 프로필, 노드, 실시간 트래픽을 보여 주는 PrizmX 메뉴 막대 패널 예시 이미지.
+
+mock:
+  status: 연결됨
+  uptime: "01:02:11"
+  modes: [Rule, Global, Direct]
+  system_proxy: System Proxy
+  profile: Profile
+  profile_value: Clash-Main
+  node: Node
+  node_value: HK-01 · 32 ms
+  upload: Upload
+  upload_value: 86 KB/s
+  download: Download
+  download_value: 1.24 MB/s
+  actions: [Open Console…, Inspector…, Settings…, Quit PrizmX]
+
+features:
+  eyebrow: 기능
+  heading: 필요한 모든 것을 클릭 한 번으로
+  intro: >-
+    PrizmX는 평소에는 메뉴 막대에서 사용하고, 정책, 규칙, 트래픽을 자세히 살펴보고 싶을 때는 전체 콘솔을 열 수 있습니다.
+  items:
+    - icon: menubar
+      title: 메뉴 막대 중심
+      text: >-
+        창을 열지 않고도 연결, Rule / Global / Direct 전환, 시스템 프록시 켜기 및 끄기, 노드 선택, 실시간 속도 확인을 모두 할 수 있습니다.
+    - icon: profile
+      title: Clash 및 sing-box 프로필
+      text: >-
+        파일이나 구독 URL에서 Clash YAML 또는 sing-box JSON을 가져오고, 앱 안에서 구독을 최신 상태로 유지할 수 있습니다.
+    - icon: tunnel
+      title: TUN 및 시스템 프록시
+      text: >-
+        Packet Tunnel 시스템 확장 프로그램의 FakeIP TUN으로 모든 앱의 트래픽을 캡처하거나, HTTP + SOCKS5 혼합 포트의 시스템 프록시를 사용하세요. Allow LAN을 켜면 다른 기기와 공유할 수 있습니다.
+    - icon: route
+      title: 규칙 기반 라우팅
+      text: >-
+        규칙에 따라 각 연결이 정책으로 전달됩니다. select, url-test, fallback, load-balance 정책 그룹이 노드를 선택하고 지연 시간을 관리합니다.
+    - icon: inspect
+      title: Inspector
+      text: >-
+        최근 연결과 활성 연결을 살펴보고, 연결을 시작한 앱, 일치한 정책, 프로토콜, 지속 시간, 방향별 전송 바이트를 확인할 수 있습니다.
+    - icon: chart
+      title: 트래픽 및 지연 시간
+      text: >-
+        일별·월별 합계와 사용량 상위 항목을 보여 주며, 경로 지연 시간을 인터넷, DNS, 프록시 구간으로 나눠 어디에서 느려지는지 알 수 있습니다.
+
+native:
+  eyebrow: 내부 구조
+  heading: 패킷 단위까지 네이티브로 구현
+  intro: >-
+    Electron 셸도, 내장된 서드파티 코어도 없습니다. 프로토콜, 규칙, 엔진, TCP/IP 스택 모두 Swift로 작성되었으며 Apple 플랫폼 전반에서 공유됩니다.
+  points:
+    - title: 처음부터 끝까지 Swift 6
+      text: >-
+        UI는 SwiftUI로, 내부는 엄격한 동시성 모델로 작성되었습니다. 하나의 코드베이스로 지금은 Mac 앱을, 다음에는 iOS 앱을 구동합니다.
+    - title: SwiftTCP 사용자 공간 스택
+      text: >-
+        Network Extension을 위해 설계된 전용 TCP/IP 스택으로, 제로 카피 패킷 경로, CUBIC 또는 BBR 혼잡 제어, 플로우별 lock-free 이벤트 루프를 갖추고 있습니다.
+    - title: 샌드박스 적용 및 공증 완료
+      text: >-
+        샌드박스가 적용된 호스트 앱과 Packet Tunnel 시스템 확장 프로그램으로 구성되며, CI에서 바로 서명되고 Apple의 공증을 받은 DMG로 배포됩니다.
+    - title: 오픈 코어, Apache 2.0
+      text: >-
+        앱, 프로토콜 엔진, 네트워크 스택이 GitHub에 공개되어 있습니다. 코드를 읽어 보고, 직접 빌드하거나, 기여해 보세요.
+  repos_label: 소스 저장소
+
+protocols:
+  eyebrow: 프로토콜
+  heading: 이미 사용 중인 서버와 호환
+  intro: >-
+    Clash YAML과 sing-box JSON 모두 아래 아웃바운드를 가져올 수 있습니다. VLESS는 프레이밍 방식, TLS와 REALITY는 전송 방식, Vision은 VLESS의 flow이며, 서로 자유롭게 조합할 수 있습니다.
+  caption: 지원되는 아웃바운드 프로토콜
+  columns:
+    protocol: 프로토콜
+    details: 전송 방식 및 옵션
+    tcp: TCP
+    udp: UDP
+  supported: 지원
+  unsupported: 미지원
+  rows:
+    - name: Shadowsocks
+      details: "AEAD 암호 `aes-128-gcm` 및 `aes-256-gcm`, 네이티브 TCP 및 UDP"
+      tcp: true
+      udp: true
+    - name: VLESS
+      details: "TCP, TLS 또는 REALITY · `xtls-rprx-vision` flow · UDP over stream"
+      tcp: true
+      udp: true
+    - name: Trojan
+      details: SNI를 지원하는 TLS
+      tcp: true
+      udp: false
+    - name: AnyTLS
+      details: SNI 및 유휴 세션 풀을 지원하는 TLS 1.3
+      tcp: true
+      udp: false
+    - name: Direct
+      details: 일치하는 트래픽은 프록시를 우회
+      tcp: true
+      udp: true
+  not_yet: >-
+    아직 지원하지 않는 항목: VMess, Hysteria, TUIC, WireGuard, Shadowsocks 2022, WebSocket / gRPC 전송 방식, Mux. 이러한 유형의 노드는 건너뛰며, 프로필의 나머지 부분은 정상적으로 로드됩니다.
+
+editions:
+  eyebrow: 에디션
+  heading: 하나의 엔진, 모든 Apple 기기
+  intro: >-
+    Mac용 커뮤니티 에디션은 지금 바로 사용할 수 있습니다. iPhone 및 Mac용 App Store 에디션은 동일한 오픈 코어를 기반으로 합니다.
+  items:
+    - name: PrizmX 커뮤니티 에디션
+      status: 지금 사용 가능
+      available: true
+      platform: macOS %min%+
+      price: 무료 · Apache 2.0
+      points:
+        - 메뉴 막대 제어 및 전체 콘솔
+        - TUN, 시스템 프록시, Allow LAN
+        - 규칙, 정책 그룹, 구독
+        - Inspector, 트래픽 및 지연 시간 통계
+      cta: Mac용 다운로드
+    - name: PrizmX App Store 에디션
+      status: 개발 중
+      available: false
+      platform: iPhone 및 Mac
+      price: iOS와 macOS 공용 단일 스토어 항목
+      points:
+        - 커뮤니티 에디션의 모든 기능
+        - Packet Tunnel 기반 네이티브 iPhone 앱
+        - HTTP 캡처, 복호화 및 재작성(예정)
+        - App Store를 통해 배포
+      cta: GitHub에서 팔로우
+
+faq:
+  eyebrow: FAQ
+  heading: 자주 묻는 질문
+  items:
+    - q: PrizmX는 무료인가요?
+      a: >-
+        네. Mac용 PrizmX 커뮤니티 에디션은 [Apache License 2.0](https://github.com/PrizmX/PrizmX/blob/main/LICENSE)에 따라 배포되는 무료 오픈 소스 소프트웨어입니다.
+    - q: 실행하려면 무엇이 필요한가요?
+      a: >-
+        macOS %min% 이상을 실행하는 Mac이 필요합니다. [GitHub Releases](https://github.com/PrizmX/PrizmX/releases/latest)에서 서명 및 공증된 DMG를 다운로드한 다음, PrizmX를 응용 프로그램 폴더로 드래그하세요.
+    - q: 터널은 어떻게 활성화하나요?
+      a: >-
+        TUN을 처음 켜면 macOS에서 PrizmX Tunnel 시스템 확장 프로그램을 허용할지 묻습니다. **시스템 설정 → 일반 → 로그인 항목 및 확장 프로그램 → 네트워크 확장 프로그램**을 열고 **PrizmX Tunnel**을 켜세요.
+    - q: 기존 Clash 구독을 사용할 수 있나요?
+      a: >-
+        네. PrizmX는 로컬 파일이나 구독 URL에서 Clash YAML과 sing-box JSON을 읽어 옵니다. 지원하지 않는 프로토콜의 노드는 건너뛰며, 규칙, 정책 그룹, 나머지 노드는 평소처럼 로드됩니다.
+    - q: TUN과 시스템 프록시의 차이점은 무엇인가요?
+      a: >-
+        시스템 프록시는 HTTP CONNECT와 SOCKS5를 처리하는 혼합 포트(기본값 7890)를 통해 macOS 프록시 설정을 따르는 앱에 서비스를 제공합니다. TUN은 프록시 설정을 무시하는 앱을 포함한 모든 트래픽을 FakeIP DNS를 사용하는 Packet Tunnel로 라우팅합니다. 둘 중 하나만 사용하거나 둘 다 사용할 수 있습니다.
+    - q: PrizmX는 VMess, Hysteria 또는 WireGuard를 지원하나요?
+      a: >-
+        아직 지원하지 않습니다. 현재 PrizmX는 Shadowsocks, VLESS(TLS, REALITY, Vision), Trojan, AnyTLS를 지원합니다. 진행 상황은 [PrizmX-Foundation](https://github.com/PrizmX/PrizmX-Foundation)에서 확인하세요.
+    - q: PrizmX는 HTTPS 트래픽을 복호화하나요?
+      a: >-
+        아니요. 커뮤니티 에디션은 연결 메타데이터(앱, 호스트, 정책, 프로토콜, 바이트 수)를 보여 줄 뿐, 트래픽을 절대 복호화하거나 재작성하지 않습니다. HTTP 캡처, 복호화 및 재작성은 App Store 에디션에서 제공될 예정입니다.
+    - q: iPhone 버전이 있나요?
+      a: >-
+        App Store 에디션의 일부로 개발 중이며, Mac 앱과 동일한 코어를 공유합니다. 최신 소식은 [GitHub의 PrizmX 조직](https://github.com/PrizmX)에서 확인하세요.
+
+cta:
+  heading: 트래픽을 직접 제어하세요
+  text: Mac을 위해 네이티브로 만든 무료 오픈 소스 앱입니다.
+
+footer:
+  tagline: Apple 플랫폼을 위한 네이티브 프록시 클라이언트.
+  product: 제품
+  source: 소스
+  releases: 릴리스
+  license: 라이선스
+  license_note: 커뮤니티 에디션은 Apache License 2.0에 따라 배포됩니다.
+  rights: PrizmX
+
+legal:
+  heading: "법적 고지"
+  privacy: "개인정보 처리방침"
+  terms: "이용약관"
+  last_updated: "최종 업데이트"
+  translation_note: "이 번역본은 참고용으로 제공됩니다. 영어 원문과 내용이 다를 경우 영어 원문이 우선합니다."
+  read_english: "영어 원문 보기"
+
+not_found:
+  title: 페이지를 찾을 수 없습니다
+  text: 찾으시는 페이지가 존재하지 않거나 다른 위치로 이동되었습니다.
+  back: 홈으로 돌아가기

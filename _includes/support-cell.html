@@ -1,0 +1,7 @@
+<td class="support {% if include.ok %}is-yes{% else %}is-no{% endif %}">
+  {%- if include.ok -%}
+    {% include icons/check.svg %}<span class="visually-hidden">{{ t.protocols.supported }}</span>
+  {%- else -%}
+    <span aria-hidden="true">—</span><span class="visually-hidden">{{ t.protocols.unsupported }}</span>
+  {%- endif -%}
+</td>

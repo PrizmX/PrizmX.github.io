@@ -1,0 +1,14 @@
+<section class="section cta" aria-labelledby="cta-title">
+  <div class="container cta-inner">
+    <img class="cta-icon" src="{{ '/assets/img/prizmx-icon-128.webp' | relative_url }}"
+         srcset="{{ '/assets/img/prizmx-icon-128.webp' | relative_url }} 1x, {{ '/assets/img/prizmx-icon-256.webp' | relative_url }} 2x"
+         width="112" height="112" alt="PrizmX" loading="lazy" decoding="async">
+    <h2 id="cta-title">{{ t.cta.heading }}</h2>
+    <p>{{ t.cta.text }}</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary btn-lg" href="{{ site.prizmx.download_url }}" rel="noopener">{% include icons/download.svg %}{{ t.hero.cta_download }}</a>
+      <a class="btn btn-ghost btn-lg" href="{{ site.prizmx.repo_url }}" rel="noopener">{% include icons/github.svg %}{{ t.hero.cta_github }}</a>
+    </div>
+    <p class="hero-note">{{ t.hero.note | replace: "%min%", min_macos }}</p>
+  </div>
+</section>

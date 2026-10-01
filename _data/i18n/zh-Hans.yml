@@ -1,0 +1,212 @@
+# 简体中文文案。键与 _data/i18n/en.yml 一一对应。
+# 经 `markdownify` 渲染的字段可以包含行内 Markdown。
+# 中文段落请写在同一行：YAML 折叠块会在换行处插入空格。
+# 标题按词组断行（word-break: keep-all），需要时用 <wbr> 标出断点。
+
+nav:
+  skip: 跳到正文
+  features: 功能
+  protocols: 协议
+  editions: 版本
+  faq: 常见问题
+  github: GitHub
+  download: 下载
+  primary_label: 主导航
+  language_label: 语言
+
+hero:
+  eyebrow: 社区版 · 免费开源
+  title: 为 Apple 平台打造的<wbr>原生代理工具
+  lead: >-
+    导入你的 Clash 或 sing-box 配置，通过 TUN 或系统代理按规则分流，每一条连接都看得清楚——一切都在 Mac 菜单栏完成。
+  cta_download: 下载 Mac 版
+  cta_github: 在 GitHub 查看源码
+  note: 需要 macOS %min% 或更高版本 · 已签名并经 Apple 公证
+  mock_label: PrizmX 菜单栏面板示意图，展示连接状态、出站模式、系统代理、配置、节点与实时流量。
+
+mock:
+  status: 已连接
+  uptime: "01:02:11"
+  modes: [Rule, Global, Direct]
+  system_proxy: System Proxy
+  profile: Profile
+  profile_value: Clash-Main
+  node: Node
+  node_value: HK-01 · 32 ms
+  upload: Upload
+  upload_value: 86 KB/s
+  download: Download
+  download_value: 1.24 MB/s
+  actions: [Open Console…, Inspector…, Settings…, Quit PrizmX]
+
+features:
+  eyebrow: 功能
+  heading: 常用操作，一键可达
+  intro: >-
+    日常使用只需菜单栏；需要细调策略、规则和流量时，再打开完整的控制台。
+  items:
+    - icon: menubar
+      title: 菜单栏优先
+      text: >-
+        连接、在 Rule / Global / Direct 之间切换、开关系统代理、选择节点、查看实时速率，都无需打开窗口。
+    - icon: profile
+      title: 兼容 Clash 与 sing-box
+      text: >-
+        从本地文件或订阅链接导入 Clash YAML 或 sing-box JSON，并可在应用内直接更新订阅。
+    - icon: tunnel
+      title: TUN 与系统代理
+      text: >-
+        通过 Packet Tunnel 系统扩展中的 FakeIP TUN 接管所有应用，或使用 HTTP + SOCKS5 混合端口的系统代理；开启 Allow LAN 即可共享给局域网设备。
+    - icon: route
+      title: 规则分流
+      text: >-
+        规则把每条连接交给对应策略；select、url-test、fallback、load-balance 策略组负责选择节点、控制延迟。
+    - icon: inspect
+      title: Inspector
+      text: >-
+        浏览最近与活动中的连接：发起连接的 App、命中的策略、协议、时长以及上下行流量。
+    - icon: chart
+      title: 流量与延迟
+      text: >-
+        按日、按月统计流量与消耗排行；路径延迟拆分为互联网、DNS 和代理三段，快速定位慢在哪里。
+
+native:
+  eyebrow: 技术底座
+  heading: 从界面到数据包，全部原生
+  intro: >-
+    没有 Electron 外壳，也不内嵌第三方内核。协议、规则、引擎和 TCP/IP 协议栈均以 Swift 编写，并在 Apple 各平台间共享。
+  points:
+    - title: 全程 Swift 6
+      text: >-
+        界面使用 SwiftUI，底层启用严格并发检查。同一套代码今天驱动 Mac 版，接下来驱动 iOS 版。
+    - title: SwiftTCP 用户态协议栈
+      text: >-
+        专为 Network Extension 打造的 TCP/IP 协议栈：零拷贝数据路径、CUBIC / BBR 拥塞控制、按连接划分的无锁事件循环。
+    - title: 沙盒运行，经过公证
+      text: >-
+        沙盒化的主应用加 Packet Tunnel 系统扩展，由 CI 直接产出经签名和 Apple 公证的 DMG。
+    - title: Open Core，Apache 2.0
+      text: >-
+        应用、协议引擎和网络协议栈都在 GitHub 公开。可以阅读、自行构建，也欢迎贡献。
+  repos_label: 源码仓库
+
+protocols:
+  eyebrow: 协议
+  heading: 直接使用<wbr>你现有的服务器
+  intro: >-
+    Clash YAML 与 sing-box JSON 均可导入以下出站协议。VLESS 是协议封装，TLS 与 REALITY 是传输层，Vision 是 VLESS 的 flow，三者可自由组合。
+  caption: 支持的出站协议
+  columns:
+    protocol: 协议
+    details: 传输与选项
+    tcp: TCP
+    udp: UDP
+  supported: 支持
+  unsupported: 不支持
+  rows:
+    - name: Shadowsocks
+      details: "AEAD 加密 `aes-128-gcm`、`aes-256-gcm`，原生 TCP 与 UDP"
+      tcp: true
+      udp: true
+    - name: VLESS
+      details: "TCP、TLS 或 REALITY · `xtls-rprx-vision` flow · UDP over stream"
+      tcp: true
+      udp: true
+    - name: Trojan
+      details: TLS，支持 SNI
+      tcp: true
+      udp: false
+    - name: AnyTLS
+      details: TLS 1.3，支持 SNI 与空闲会话池
+      tcp: true
+      udp: false
+    - name: Direct
+      details: 命中的流量直接连接，不经过代理
+      tcp: true
+      udp: true
+  not_yet: >-
+    暂不支持：VMess、Hysteria、TUIC、WireGuard、Shadowsocks 2022、WebSocket / gRPC 传输以及 Mux。这些类型的节点会被跳过，配置中的其余部分照常加载。
+
+editions:
+  eyebrow: 版本
+  heading: 同一引擎，<wbr>覆盖每台 Apple 设备
+  intro: >-
+    Mac 社区版现已推出。面向 iPhone 与 Mac 的 App Store 版本基于同一套开源核心构建。
+  items:
+    - name: PrizmX 社区版
+      status: 现已推出
+      available: true
+      platform: macOS %min%+
+      price: 免费 · Apache 2.0
+      points:
+        - 菜单栏控制与完整控制台
+        - TUN、系统代理与 Allow LAN
+        - 规则、策略组与订阅
+        - Inspector、流量与延迟统计
+      cta: 下载 Mac 版
+    - name: PrizmX App Store 版
+      status: 开发中
+      available: false
+      platform: iPhone 与 Mac
+      price: iOS 与 macOS 共用同一商店条目
+      points:
+        - 包含社区版全部功能
+        - 原生 iPhone 应用，基于 Packet Tunnel
+        - HTTP 抓包、解密与重写（规划中）
+        - 通过 App Store 分发
+      cta: 在 GitHub 关注
+
+faq:
+  eyebrow: 常见问题
+  heading: 常见问题
+  items:
+    - q: PrizmX 免费吗？
+      a: >-
+        是的。PrizmX Mac 社区版免费且开源，采用 [Apache License 2.0](https://github.com/PrizmX/PrizmX/blob/main/LICENSE) 许可。
+    - q: 运行需要什么条件？
+      a: >-
+        一台运行 macOS %min% 或更高版本的 Mac。从 [GitHub Releases](https://github.com/PrizmX/PrizmX/releases/latest) 下载经签名和公证的 DMG，把 PrizmX 拖进“应用程序”即可。
+    - q: 如何启用隧道？
+      a: >-
+        首次开启 TUN 时，macOS 会请求允许 PrizmX Tunnel 系统扩展。打开**系统设置 → 通用 → 登录项与扩展 → 网络扩展**，启用 **PrizmX Tunnel**。
+    - q: 可以使用现有的 Clash 订阅吗？
+      a: >-
+        可以。PrizmX 支持从本地文件或订阅链接读取 Clash YAML 和 sing-box JSON。使用暂不支持协议的节点会被跳过，规则、策略组和其余节点照常加载。
+    - q: TUN 和系统代理有什么区别？
+      a: >-
+        系统代理通过混合端口（默认 7890，支持 HTTP CONNECT 与 SOCKS5）服务遵循 macOS 代理设置的应用；TUN 借助 Packet Tunnel 和 FakeIP DNS 接管全部流量，包括不遵循代理设置的应用。两者可单独或同时开启。
+    - q: 支持 VMess、Hysteria 或 WireGuard 吗？
+      a: >-
+        暂不支持。目前支持 Shadowsocks、VLESS（TLS、REALITY、Vision）、Trojan 和 AnyTLS。进展可关注 [PrizmX-Foundation](https://github.com/PrizmX/PrizmX-Foundation)。
+    - q: PrizmX 会解密 HTTPS 流量吗？
+      a: >-
+        不会。社区版只展示连接元数据——App、主机、策略、协议和流量——不会解密或改写流量。HTTP 抓包、解密与重写计划在 App Store 版提供。
+    - q: 有 iPhone 版吗？
+      a: >-
+        iPhone 版作为 App Store 版本的一部分正在开发中，与 Mac 版共用同一套核心。可关注 [GitHub 上的 PrizmX 组织](https://github.com/PrizmX)获取最新进展。
+
+cta:
+  heading: 掌控你的网络流量
+  text: 免费、开源，为 Mac 原生打造。
+
+footer:
+  tagline: 为 Apple 平台打造的原生代理工具。
+  product: 产品
+  source: 源码
+  releases: 版本发布
+  license: 许可证
+  license_note: 社区版以 Apache License 2.0 发布。
+  rights: PrizmX
+
+legal:
+  heading: "法律信息"
+  privacy: "隐私政策"
+  terms: "服务条款"
+  last_updated: "最后更新"
+  translation_note: "本译文仅供参考。如与英文版本不一致，以英文版本为准。"
+  read_english: "阅读英文版"
+
+not_found:
+  title: 页面不存在
+  text: 你访问的页面不存在或已被移动。
+  back: 返回首页

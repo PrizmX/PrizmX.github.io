@@ -1,0 +1,212 @@
+# 日本語の文言。キーは _data/i18n/en.yml と一対一で対応します。
+# `markdownify` で描画されるフィールドにはインライン Markdown を含められます。
+# 日本語の段落は 1 行で書いてください：YAML の折りたたみブロックは改行位置に空白を挿入します。
+# 見出しは文節単位で改行し（word-break: keep-all）、<wbr> の位置でのみ折り返します。
+
+nav:
+  skip: 本文へスキップ
+  features: 機能
+  protocols: プロトコル
+  editions: エディション
+  faq: よくある質問
+  github: GitHub
+  download: ダウンロード
+  primary_label: メインナビゲーション
+  language_label: 言語
+
+hero:
+  eyebrow: コミュニティ版 · 無料のオープンソース
+  title: Apple プラットフォーム<wbr>向けの<wbr>ネイティブ<wbr>プロキシ<wbr>クライアント
+  lead: >-
+    お手持ちの Clash や sing-box のプロファイルを読み込み、TUN またはシステムプロキシ経由でルールに沿ってトラフィックを振り分け、すべての接続を確認できます。操作はすべて Mac のメニューバーから行えます。
+  cta_download: Mac 版をダウンロード
+  cta_github: GitHub でソースを見る
+  note: macOS %min% 以降が必要 · 署名・公証済み
+  mock_label: PrizmX のメニューバーパネルのイラスト。接続状態、アウトバウンドモード、システムプロキシ、プロファイル、ノード、リアルタイムのトラフィックを表示しています。
+
+mock:
+  status: 接続済み
+  uptime: "01:02:11"
+  modes: [Rule, Global, Direct]
+  system_proxy: System Proxy
+  profile: Profile
+  profile_value: Clash-Main
+  node: Node
+  node_value: HK-01 · 32 ms
+  upload: Upload
+  upload_value: 86 KB/s
+  download: Download
+  download_value: 1.24 MB/s
+  actions: [Open Console…, Inspector…, Settings…, Quit PrizmX]
+
+features:
+  eyebrow: 機能
+  heading: 必要なものは、<wbr>すべてワンクリックで
+  intro: >-
+    PrizmX は普段はメニューバーに常駐し、ポリシーやルール、トラフィックを詳しく調べたいときはフル機能のコンソールを開けます。
+  items:
+    - icon: menubar
+      title: メニューバー中心
+      text: >-
+        接続、Rule / Global / Direct の切り替え、システムプロキシのオン／オフ、ノードの選択、リアルタイムの速度確認まで、ウインドウを開かずに行えます。
+    - icon: profile
+      title: Clash と sing-box のプロファイル
+      text: >-
+        Clash YAML または sing-box JSON をファイルやサブスクリプション URL から読み込み、アプリ内でサブスクリプションを常に最新の状態に保てます。
+    - icon: tunnel
+      title: TUN とシステムプロキシ
+      text: >-
+        Packet Tunnel システム拡張内の FakeIP TUN ですべてのアプリの通信を取り込むか、HTTP + SOCKS5 の混合ポートでシステムプロキシを使えます。Allow LAN を使えば、ほかのデバイスとも共有できます。
+    - icon: route
+      title: ルールベースのルーティング
+      text: >-
+        ルールが各接続をポリシーへ振り分けます。ポリシーグループ（select、url-test、fallback、load-balance）がノードを選び、遅延を抑えます。
+    - icon: inspect
+      title: Inspector
+      text: >-
+        最近の接続と現在アクティブな接続を、接続を開始したアプリ、マッチしたポリシー、プロトコル、接続時間、送受信それぞれのバイト数とともに閲覧できます。
+    - icon: chart
+      title: トラフィックと遅延
+      text: >-
+        日別・月別の合計と使用量の上位を表示します。経路の遅延はインターネット・DNS・プロキシに分けて示すので、どこで遅くなっているのかを見分けられます。
+
+native:
+  eyebrow: 内部の仕組み
+  heading: パケットレベルまで<wbr>ネイティブで構築
+  intro: >-
+    Electron のシェルも、組み込みのサードパーティ製コアもありません。プロトコル、ルール、エンジン、TCP/IP スタックはすべて Swift で書かれ、Apple の各プラットフォームで共有されています。
+  points:
+    - title: 隅々まで Swift 6
+      text: >-
+        UI には SwiftUI を、その下では厳格な並行性チェックを採用しています。ひとつのコードベースが、現在は Mac アプリを、次は iOS アプリを支えます。
+    - title: SwiftTCP ユーザー空間スタック
+      text: >-
+        Network Extension 向けに専用設計された TCP/IP スタックで、ゼロコピーのパケット経路、CUBIC または BBR による輻輳制御、フローごとのロックフリーなイベントループを備えています。
+    - title: サンドボックス化・公証済み
+      text: >-
+        サンドボックス化されたホストアプリと Packet Tunnel システム拡張で構成され、署名と Apple の公証を受けた DMG として CI から直接配布されます。
+    - title: オープンコア、Apache 2.0
+      text: >-
+        アプリ、プロトコルエンジン、ネットワークスタックは GitHub で公開されています。コードを読んだり、自分でビルドしたり、開発に参加したりできます。
+  repos_label: ソースリポジトリ
+
+protocols:
+  eyebrow: プロトコル
+  heading: お使いのサーバーで<wbr>そのまま使える
+  intro: >-
+    Clash YAML と sing-box JSON のどちらからでも、以下のアウトバウンドを読み込めます。VLESS はフレーミング、TLS と REALITY はトランスポート、Vision は VLESS のフローで、これらは自由に組み合わせられます。
+  caption: 対応アウトバウンドプロトコル
+  columns:
+    protocol: プロトコル
+    details: トランスポートとオプション
+    tcp: TCP
+    udp: UDP
+  supported: 対応
+  unsupported: 非対応
+  rows:
+    - name: Shadowsocks
+      details: "AEAD 暗号（`aes-128-gcm`、`aes-256-gcm`）、TCP と UDP にネイティブ対応"
+      tcp: true
+      udp: true
+    - name: VLESS
+      details: "TCP、TLS または REALITY · `xtls-rprx-vision` フロー · UDP over stream"
+      tcp: true
+      udp: true
+    - name: Trojan
+      details: SNI 対応の TLS
+      tcp: true
+      udp: false
+    - name: AnyTLS
+      details: SNI とアイドルセッションプールに対応した TLS 1.3
+      tcp: true
+      udp: false
+    - name: Direct
+      details: マッチしたトラフィックはプロキシを経由しません
+      tcp: true
+      udp: true
+  not_yet: >-
+    現時点で未対応：VMess、Hysteria、TUIC、WireGuard、Shadowsocks 2022、WebSocket / gRPC トランスポート、Mux。これらのタイプのノードはスキップされ、プロファイルの残りの部分はそのまま読み込まれます。
+
+editions:
+  eyebrow: エディション
+  heading: ひとつのエンジンで、<wbr>すべての Apple デバイスへ
+  intro: >-
+    Mac 向けのコミュニティ版は現在提供中です。iPhone と Mac に対応する App Store 版も、同じオープンコアの上に構築されています。
+  items:
+    - name: PrizmX コミュニティ版
+      status: 提供中
+      available: true
+      platform: macOS %min% 以降
+      price: 無料 · Apache 2.0
+      points:
+        - メニューバーでの操作とフル機能のコンソール
+        - TUN、システムプロキシ、Allow LAN
+        - ルール、ポリシーグループ、サブスクリプション
+        - Inspector、トラフィックと遅延の統計
+      cta: Mac 版をダウンロード
+    - name: PrizmX App Store 版
+      status: 開発中
+      available: false
+      platform: iPhone と Mac
+      price: iOS・macOS 共通のストアページ
+      points:
+        - コミュニティ版のすべての機能
+        - Packet Tunnel 対応のネイティブ iPhone アプリ
+        - HTTP のキャプチャ、復号、書き換え（予定）
+        - App Store で配布
+      cta: GitHub でフォロー
+
+faq:
+  eyebrow: FAQ
+  heading: よくある質問
+  items:
+    - q: PrizmX は無料ですか？
+      a: >-
+        はい。Mac 向けの PrizmX コミュニティ版は無料のオープンソースソフトウェアで、[Apache License 2.0](https://github.com/PrizmX/PrizmX/blob/main/LICENSE) のもとで公開されています。
+    - q: 動作に必要な環境は？
+      a: >-
+        macOS %min% 以降が動作する Mac が必要です。署名・公証済みの DMG を [GitHub Releases](https://github.com/PrizmX/PrizmX/releases/latest) からダウンロードし、PrizmX を「アプリケーション」フォルダにドラッグしてください。
+    - q: トンネルを有効にするには？
+      a: >-
+        初めて TUN をオンにすると、macOS から PrizmX Tunnel システム拡張の許可を求められます。**システム設定 → 一般 → ログイン項目と機能拡張 → ネットワーク機能拡張**を開き、**PrizmX Tunnel** をオンにしてください。
+    - q: 今使っている Clash のサブスクリプションをそのまま使えますか？
+      a: >-
+        はい。PrizmX はローカルファイルまたはサブスクリプション URL から Clash YAML と sing-box JSON を読み込めます。未対応のプロトコルのノードはスキップされ、ルール、ポリシーグループ、残りのノードは通常どおり読み込まれます。
+    - q: TUN とシステムプロキシの違いは？
+      a: >-
+        システムプロキシは、HTTP CONNECT と SOCKS5 の両方に対応した混合ポート（デフォルトは 7890）を通じて、macOS のプロキシ設定に従うアプリに対応します。TUN は、プロキシ設定を無視するアプリも含めたすべてのトラフィックを、FakeIP DNS を使った Packet Tunnel 経由でルーティングします。どちらか一方だけでも、両方同時にも使えます。
+    - q: PrizmX は VMess、Hysteria、WireGuard に対応していますか？
+      a: >-
+        まだ対応していません。現在 PrizmX が対応しているのは Shadowsocks、VLESS（TLS、REALITY、Vision）、Trojan、AnyTLS です。進捗は [PrizmX-Foundation](https://github.com/PrizmX/PrizmX-Foundation) で確認できます。
+    - q: PrizmX は HTTPS 通信を復号しますか？
+      a: >-
+        いいえ。コミュニティ版は接続のメタデータ（アプリ、ホスト、ポリシー、プロトコル、バイト数）を表示しますが、トラフィックを復号したり書き換えたりすることは一切ありません。HTTP のキャプチャ、復号、書き換えは App Store 版で提供予定です。
+    - q: iPhone 版はありますか？
+      a: >-
+        App Store 版の一部として開発中で、Mac アプリと同じコアを共有しています。最新情報は [GitHub の PrizmX Organization](https://github.com/PrizmX) でご確認ください。
+
+cta:
+  heading: トラフィックを<wbr>自在にコントロール
+  text: 無料、オープンソース、そして Mac ネイティブ。
+
+footer:
+  tagline: Apple プラットフォーム向けのネイティブプロキシクライアント。
+  product: 製品
+  source: ソース
+  releases: リリース
+  license: ライセンス
+  license_note: コミュニティ版は Apache License 2.0 のもとで公開されています。
+  rights: PrizmX
+
+legal:
+  heading: "法的情報"
+  privacy: "プライバシーポリシー"
+  terms: "利用規約"
+  last_updated: "最終更新日"
+  translation_note: "この翻訳は参考として提供しています。英語版と内容が異なる場合は、英語版が優先されます。"
+  read_english: "英語版を読む"
+
+not_found:
+  title: ページが見つかりません
+  text: お探しのページは存在しないか、移動した可能性があります。
+  back: ホームに戻る

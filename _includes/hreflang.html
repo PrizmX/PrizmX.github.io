@@ -1,0 +1,18 @@
+{%- comment -%}
+  Alternate-language links for pages that share `ref`. The first language in
+  site.languages that has a translation doubles as x-default.
+{%- endcomment -%}
+{%- if page.ref -%}
+  {%- assign translations = site.pages | where: "ref", page.ref -%}
+  {%- assign has_default = false -%}
+  {%- for language in site.languages -%}
+    {%- assign tr = translations | where: "lang", language.code | first -%}
+    {%- if tr %}
+<link rel="alternate" hreflang="{{ language.code }}" href="{{ tr.url | absolute_url }}">
+      {%- unless has_default %}
+<link rel="alternate" hreflang="x-default" href="{{ tr.url | absolute_url }}">
+        {%- assign has_default = true -%}
+      {%- endunless -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}

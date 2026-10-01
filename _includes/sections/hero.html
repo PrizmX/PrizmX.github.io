@@ -1,0 +1,21 @@
+<section class="hero" aria-labelledby="hero-title">
+  <div class="container hero-inner">
+    <div class="hero-copy">
+      <p class="eyebrow">{{ t.hero.eyebrow }}</p>
+      <h1 id="hero-title">{{ t.hero.title }}</h1>
+      <p class="lead">{{ t.hero.lead }}</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary btn-lg" href="{{ site.prizmx.download_url }}" rel="noopener">
+          {% include icons/download.svg %}
+          {{ t.hero.cta_download }}
+        </a>
+        <a class="btn btn-ghost btn-lg" href="{{ site.prizmx.repo_url }}" rel="noopener">
+          {% include icons/github.svg %}
+          {{ t.hero.cta_github }}
+        </a>
+      </div>
+      <p class="hero-note">{{ t.hero.note | replace: "%min%", min_macos }}</p>
+    </div>
+    {% include menubar-mock.html %}
+  </div>
+</section>

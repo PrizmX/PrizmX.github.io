@@ -1,0 +1,18 @@
+<section class="section" id="features" aria-labelledby="features-title">
+  <div class="container">
+    <header class="section-head">
+      <p class="eyebrow">{{ t.features.eyebrow }}</p>
+      <h2 id="features-title">{{ t.features.heading }}</h2>
+      <p>{{ t.features.intro }}</p>
+    </header>
+    <ul class="feature-grid">
+      {%- for item in t.features.items %}
+      <li class="card feature">
+        <span class="feature-icon">{% include icons/{{ item.icon }}.svg %}</span>
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.text }}</p>
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>

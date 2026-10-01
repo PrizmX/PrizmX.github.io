@@ -1,0 +1,7 @@
+{%- comment -%} Contact address for the legal pages (site.prizmx.contact_email). {%- endcomment -%}
+{%- assign email = site.prizmx.contact_email | strip -%}
+{%- if email != "" -%}
+<a href="mailto:{{ email }}">{{ email }}</a>
+{%- else -%}
+<mark>contact_email not set</mark>
+{%- endif -%}

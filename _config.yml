@@ -1,0 +1,77 @@
+# Site identity — consumed by jekyll-seo-tag, jekyll-sitemap and the layouts.
+title: PrizmX
+description: >-
+  PrizmX is a native proxy client for Apple platforms. Import Clash or
+  sing-box profiles and route traffic by rule through TUN or system proxy.
+url: https://prizmx.github.io
+baseurl: ""
+lang: en
+logo: /assets/img/prizmx-icon-512.png
+
+social:
+  name: PrizmX
+  links:
+    - https://github.com/PrizmX
+
+# Product links and facts shared by every language.
+prizmx:
+  download_url: https://github.com/PrizmX/PrizmX/releases/latest
+  repo_url: https://github.com/PrizmX/PrizmX
+  org_url: https://github.com/PrizmX
+  license_url: https://github.com/PrizmX/PrizmX/blob/main/LICENSE
+  min_macos: "26.5"
+  # Shown on the privacy and terms pages. Production builds fail while empty.
+  contact_email: "support@prizmx.app"
+  repos:
+    - name: PrizmX
+      url: https://github.com/PrizmX/PrizmX
+    - name: PrizmX-Foundation
+      url: https://github.com/PrizmX/PrizmX-Foundation
+    - name: PrizmX-Kit
+      url: https://github.com/PrizmX/PrizmX-Kit
+    - name: SwiftTCP
+      url: https://github.com/PrizmX/SwiftTCP
+
+# Pages that share a `ref` are translations of each other (used for hreflang
+# and the language menu). Order is the menu order; the first entry is x-default.
+# Each language needs _data/i18n/<code>.yml and a page with `lang: <code>`.
+languages:
+  - code: en
+    label: English
+  - code: de
+    label: Deutsch
+  - code: fr
+    label: Français
+  - code: es
+    label: Español
+  - code: ja
+    label: 日本語
+  - code: ko
+    label: 한국어
+  - code: zh-Hans
+    label: 简体中文
+  - code: zh-Hant
+    label: 繁體中文
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+sass:
+  style: compressed
+  sourcemap: never
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+      lang: en
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - README.md
+  - vendor/
+  - .bundle/

@@ -1,0 +1,23 @@
+<section class="section section-tinted" id="native" aria-labelledby="native-title">
+  <div class="container native">
+    <div class="native-copy">
+      <p class="eyebrow">{{ t.native.eyebrow }}</p>
+      <h2 id="native-title">{{ t.native.heading }}</h2>
+      <p>{{ t.native.intro }}</p>
+      <p class="repos-label">{{ t.native.repos_label }}</p>
+      <ul class="repo-list">
+        {%- for repo in site.prizmx.repos %}
+        <li><a href="{{ repo.url }}" rel="noopener">{% include icons/github.svg %}{{ repo.name }}</a></li>
+        {%- endfor %}
+      </ul>
+    </div>
+    <ul class="native-points">
+      {%- for point in t.native.points %}
+      <li>
+        <h3>{{ point.title }}</h3>
+        <p>{{ point.text }}</p>
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>

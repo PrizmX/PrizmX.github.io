@@ -1,0 +1,18 @@
+---
+lang: en
+permalink: /404.html
+sitemap: false
+robots: noindex
+title: Page not found
+description: The page you are looking for does not exist.
+---
+{%- include locale.html -%}
+<section class="not-found">
+  <div class="container">
+    <h1>{{ t.not_found.title }}</h1>
+    <p>{{ t.not_found.text }}</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="{{ home_url }}">{{ t.not_found.back }}</a>
+    </div>
+  </div>
+</section>

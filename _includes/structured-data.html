@@ -1,0 +1,40 @@
+{%- comment -%}
+  Home-page JSON-LD on top of what jekyll-seo-tag emits (WebSite):
+  the downloadable app and the visible FAQ.
+{%- endcomment -%}
+{%- capture app_os -%}macOS {{ min_macos }}{%- endcapture -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "PrizmX",
+  "description": {{ page.description | strip | jsonify }},
+  "url": {{ page.url | absolute_url | jsonify }},
+  "image": {{ site.logo | absolute_url | jsonify }},
+  "inLanguage": {{ lang | jsonify }},
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": {{ app_os | jsonify }},
+  "downloadUrl": {{ site.prizmx.download_url | jsonify }},
+  "license": "https://www.apache.org/licenses/LICENSE-2.0",
+  "isAccessibleForFree": true,
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "sameAs": [{{ site.prizmx.repo_url | jsonify }}],
+  "publisher": { "@type": "Organization", "name": "PrizmX", "url": {{ site.prizmx.org_url | jsonify }} }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": {{ lang | jsonify }},
+  "mainEntity": [
+    {%- for item in t.faq.items %}
+    {
+      "@type": "Question",
+      "name": {{ item.q | jsonify }},
+      "acceptedAnswer": { "@type": "Answer", "text": {{ item.a | replace: "%min%", min_macos | markdownify | strip_html | strip_newlines | strip | jsonify }} }
+    }{% unless forloop.last %},{% endunless %}
+    {%- endfor %}
+  ]
+}
+</script>

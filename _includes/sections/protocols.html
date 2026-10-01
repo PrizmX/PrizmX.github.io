@@ -1,0 +1,34 @@
+{%- assign p = t.protocols -%}
+<section class="section" id="protocols" aria-labelledby="protocols-title">
+  <div class="container">
+    <header class="section-head">
+      <p class="eyebrow">{{ p.eyebrow }}</p>
+      <h2 id="protocols-title">{{ p.heading }}</h2>
+      <p>{{ p.intro }}</p>
+    </header>
+    <div class="table-wrap">
+      <table class="protocol-table">
+        <caption class="visually-hidden">{{ p.caption }}</caption>
+        <thead>
+          <tr>
+            <th scope="col">{{ p.columns.protocol }}</th>
+            <th scope="col">{{ p.columns.details }}</th>
+            <th scope="col">{{ p.columns.tcp }}</th>
+            <th scope="col">{{ p.columns.udp }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%- for row in p.rows %}
+          <tr>
+            <th scope="row">{{ row.name }}</th>
+            <td>{{ row.details | markdownify | remove: "<p>" | remove: "</p>" | strip }}</td>
+            {% include support-cell.html ok=row.tcp %}
+            {% include support-cell.html ok=row.udp %}
+          </tr>
+          {%- endfor %}
+        </tbody>
+      </table>
+    </div>
+    <p class="footnote">{{ p.not_yet }}</p>
+  </div>
+</section>

@@ -1,0 +1,260 @@
+# Textos en español. Las claves reflejan _data/i18n/en.yml una a una.
+# Los campos procesados con `markdownify` pueden contener Markdown en línea.
+
+nav:
+  skip: Saltar al contenido
+  features: Funciones
+  protocols: Protocolos
+  editions: Ediciones
+  faq: FAQ
+  github: GitHub
+  download: Descargar
+  primary_label: Navegación principal
+  language_label: Idioma
+
+hero:
+  eyebrow: Edición Community · Gratis y de código abierto
+  title: El cliente proxy nativo para las plataformas de Apple
+  lead: >-
+    Importa tu perfil de Clash o sing-box, enruta el tráfico por reglas con TUN
+    o con el proxy del sistema y consulta cada conexión, todo desde la barra de
+    menús del Mac.
+  cta_download: Descargar para Mac
+  cta_github: Ver el código en GitHub
+  note: Requiere macOS %min% o posterior · Firmado y notarizado
+  mock_label: >-
+    Ilustración del panel de PrizmX en la barra de menús con el estado de la
+    conexión, el modo de salida, el proxy del sistema, el perfil, el nodo y el
+    tráfico en tiempo real.
+
+mock:
+  status: Conectado
+  uptime: "01:02:11"
+  modes: [Rule, Global, Direct]
+  system_proxy: System Proxy
+  profile: Profile
+  profile_value: Clash-Main
+  node: Node
+  node_value: HK-01 · 32 ms
+  upload: Upload
+  upload_value: 86 KB/s
+  download: Download
+  download_value: 1.24 MB/s
+  actions: [Open Console…, Inspector…, Settings…, Quit PrizmX]
+
+features:
+  eyebrow: Funciones
+  heading: Todo lo que necesitas, a un clic
+  intro: >-
+    PrizmX vive en la barra de menús para el uso diario y abre una consola
+    completa cuando quieres profundizar en políticas, reglas y tráfico.
+  items:
+    - icon: menubar
+      title: La barra de menús, primero
+      text: >-
+        Conéctate, cambia entre Rule, Global y Direct, activa o desactiva el
+        proxy del sistema, elige un nodo y sigue la velocidad en tiempo real sin
+        abrir ninguna ventana.
+    - icon: profile
+      title: Perfiles de Clash y sing-box
+      text: >-
+        Importa YAML de Clash o JSON de sing-box desde un archivo o una URL de
+        suscripción, y mantén las suscripciones al día desde la propia app.
+    - icon: tunnel
+      title: TUN y proxy del sistema
+      text: >-
+        Captura todas las apps con un TUN FakeIP en una extensión del sistema
+        Packet Tunnel, o usa el proxy del sistema en un puerto mixto HTTP +
+        SOCKS5. Activa Allow LAN para compartirlo con otros dispositivos.
+    - icon: route
+      title: Enrutamiento por reglas
+      text: >-
+        Las reglas envían cada conexión a una política. Los grupos de políticas
+        —select, url-test, fallback y load-balance— eligen el nodo y mantienen
+        la latencia bajo control.
+    - icon: inspect
+      title: Inspector
+      text: >-
+        Explora las conexiones recientes y activas con la app que las abrió, la
+        política coincidente, el protocolo, la duración y los bytes en cada
+        sentido.
+    - icon: chart
+      title: Tráfico y latencia
+      text: >-
+        Totales diarios y mensuales, los principales consumidores y la latencia
+        de la ruta desglosada en internet, DNS y proxy, para que sepas de dónde
+        viene la lentitud.
+
+native:
+  eyebrow: Por dentro
+  heading: Nativo hasta el último paquete
+  intro: >-
+    Sin envoltorio de Electron ni núcleo de terceros integrado. Los protocolos,
+    las reglas, el motor y la pila TCP/IP están escritos en Swift y se comparten
+    entre las plataformas de Apple.
+  points:
+    - title: Swift 6 de principio a fin
+      text: >-
+        SwiftUI en la superficie, concurrencia estricta por debajo. Una sola
+        base de código impulsa hoy la app para Mac y, a continuación, la de iOS.
+    - title: Pila SwiftTCP en espacio de usuario
+      text: >-
+        Una pila TCP/IP diseñada específicamente para Network Extension, con una
+        ruta de paquetes sin copias, control de congestión CUBIC o BBR y bucles
+        de eventos por flujo sin bloqueos.
+    - title: En sandbox y notarizado
+      text: >-
+        Una app principal en sandbox y una extensión del sistema Packet Tunnel,
+        distribuidas como un DMG firmado y notarizado por Apple directamente
+        desde CI.
+    - title: Núcleo abierto, Apache 2.0
+      text: >-
+        La app, el motor de protocolos y la pila de red son públicos en GitHub.
+        Lee el código, compílalo o contribuye.
+  repos_label: Repositorios de código fuente
+
+protocols:
+  eyebrow: Protocolos
+  heading: Compatible con los servidores que ya usas
+  intro: >-
+    Tanto el YAML de Clash como el JSON de sing-box importan las salidas
+    siguientes. VLESS es el encapsulado; TLS y REALITY son transportes; Vision
+    es un flow de VLESS, y se pueden combinar libremente.
+  caption: Protocolos de salida compatibles
+  columns:
+    protocol: Protocolo
+    details: Transportes y opciones
+    tcp: TCP
+    udp: UDP
+  supported: "Sí"
+  unsupported: "No"
+  rows:
+    - name: Shadowsocks
+      details: "Cifrados AEAD `aes-128-gcm` y `aes-256-gcm`, TCP y UDP nativos"
+      tcp: true
+      udp: true
+    - name: VLESS
+      details: "TCP, TLS o REALITY · flow `xtls-rprx-vision` · UDP sobre stream"
+      tcp: true
+      udp: true
+    - name: Trojan
+      details: TLS con SNI
+      tcp: true
+      udp: false
+    - name: AnyTLS
+      details: TLS 1.3 con SNI y un pool de sesiones inactivas
+      tcp: true
+      udp: false
+    - name: Direct
+      details: Evita el proxy para el tráfico coincidente
+      tcp: true
+      udp: true
+  not_yet: >-
+    Aún no se admiten: VMess, Hysteria, TUIC, WireGuard, Shadowsocks 2022, los
+    transportes WebSocket / gRPC ni Mux. Los nodos de estos tipos se omiten y el
+    resto de tu perfil se carga igualmente.
+
+editions:
+  eyebrow: Ediciones
+  heading: Un motor para cada dispositivo Apple
+  intro: >-
+    La edición Community para Mac ya está disponible. Una edición para App
+    Store, destinada a iPhone y Mac, se basa en el mismo núcleo abierto.
+  items:
+    - name: PrizmX Community
+      status: Ya disponible
+      available: true
+      platform: macOS %min%+
+      price: Gratis · Apache 2.0
+      points:
+        - Control desde la barra de menús y consola completa
+        - TUN, proxy del sistema y Allow LAN
+        - Reglas, grupos de políticas y suscripciones
+        - Inspector, estadísticas de tráfico y latencia
+      cta: Descargar para Mac
+    - name: PrizmX para App Store
+      status: En desarrollo
+      available: false
+      platform: iPhone y Mac
+      price: Una sola ficha para iOS y macOS
+      points:
+        - Todo lo de la edición Community
+        - App nativa para iPhone con Packet Tunnel
+        - Captura, descifrado y reescritura HTTP (previsto)
+        - Distribuida a través del App Store
+      cta: Seguir en GitHub
+
+faq:
+  eyebrow: FAQ
+  heading: Preguntas frecuentes
+  items:
+    - q: "¿PrizmX es gratuito?"
+      a: >-
+        Sí. PrizmX Community para Mac es gratuito y de código abierto, con
+        licencia [Apache License 2.0](https://github.com/PrizmX/PrizmX/blob/main/LICENSE).
+    - q: "¿Qué necesito para usarlo?"
+      a: >-
+        Un Mac con macOS %min% o posterior. Descarga el DMG firmado y notarizado
+        desde [GitHub Releases](https://github.com/PrizmX/PrizmX/releases/latest)
+        y arrastra PrizmX a la carpeta Aplicaciones.
+    - q: "¿Cómo activo el túnel?"
+      a: >-
+        La primera vez que activas TUN, macOS te pide permitir la extensión del
+        sistema PrizmX Tunnel. Abre **Ajustes del Sistema → General → Ítems de
+        inicio y extensiones → Extensiones de red** y activa **PrizmX Tunnel**.
+    - q: "¿Puedo usar mi suscripción de Clash actual?"
+      a: >-
+        Sí. PrizmX lee YAML de Clash y JSON de sing-box desde un archivo local o
+        una URL de suscripción. Los nodos con protocolos no compatibles se
+        omiten; las reglas, los grupos de políticas y el resto de los nodos se
+        cargan con normalidad.
+    - q: "¿Qué diferencia hay entre TUN y el proxy del sistema?"
+      a: >-
+        El proxy del sistema da servicio a las apps que respetan los ajustes de
+        proxy de macOS mediante un puerto mixto (7890 de forma predeterminada)
+        que admite HTTP CONNECT y SOCKS5. TUN enruta todo el tráfico —incluidas
+        las apps que ignoran los ajustes de proxy— a través de un Packet Tunnel
+        con DNS FakeIP. Usa uno de los dos o ambos.
+    - q: "¿PrizmX es compatible con VMess, Hysteria o WireGuard?"
+      a: >-
+        Todavía no. Actualmente PrizmX admite Shadowsocks, VLESS (TLS, REALITY,
+        Vision), Trojan y AnyTLS. Sigue el progreso en
+        [PrizmX-Foundation](https://github.com/PrizmX/PrizmX-Foundation).
+    - q: "¿PrizmX descifra el tráfico HTTPS?"
+      a: >-
+        No. La edición Community muestra los metadatos de cada conexión (app,
+        host, política, protocolo y bytes), pero nunca descifra ni reescribe el
+        tráfico. La captura, el descifrado y la reescritura HTTP están previstos
+        para la edición de App Store.
+    - q: "¿Hay una versión para iPhone?"
+      a: >-
+        Está en desarrollo como parte de la edición de App Store y comparte el
+        mismo núcleo que la app para Mac. Sigue a la
+        [organización PrizmX en GitHub](https://github.com/PrizmX) para estar al
+        tanto de las novedades.
+
+cta:
+  heading: Toma el control de tu tráfico
+  text: Gratis, de código abierto y nativo para tu Mac.
+
+footer:
+  tagline: Un cliente proxy nativo para las plataformas de Apple.
+  product: Producto
+  source: Código fuente
+  releases: Versiones
+  license: Licencia
+  license_note: La edición Community se publica bajo la Apache License 2.0.
+  rights: PrizmX
+
+legal:
+  heading: "Legal"
+  privacy: "Política de privacidad"
+  terms: "Términos del servicio"
+  last_updated: "Última actualización"
+  translation_note: "Esta traducción se ofrece solo como referencia. En caso de discrepancia, prevalece la versión en inglés."
+  read_english: "Leer la versión en inglés"
+
+not_found:
+  title: Página no encontrada
+  text: La página que buscas no existe o se ha movido.
+  back: Volver al inicio
