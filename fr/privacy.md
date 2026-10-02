@@ -6,14 +6,15 @@ ref: privacy
 permalink: /fr/privacy/
 title: "Politique de confidentialité"
 description: >-
-  Comment PrizmX traite vos données : ni compte, ni outil d’analyse, ni suivi.
-  Les profils et les statistiques restent sur votre appareil.
-last_updated: 2026-10-01
+  Comment PrizmX traite vos données : ni compte, ni publicité, ni suivi.
+  PrizmX Communauté envoie des données d’utilisation anonymes que vous pouvez
+  désactiver.
+last_updated: 2026-10-02
 ---
 
 PrizmX est un client proxy pour les plateformes Apple, développé en tant que projet open source. La présente politique explique quelles informations les applications PrizmX et ce site web traitent, et où elles sont transmises.
 
-**En bref :** PrizmX ne comporte ni compte, ni outil d’analyse, ni publicité, ni suivi. Nous n’exploitons aucun serveur recevant vos données depuis les applications. Vos profils, réglages et statistiques restent sur votre appareil.
+**En bref :** PrizmX ne comporte ni compte, ni publicité, ni suivi. PrizmX Communauté envoie des données d’utilisation anonymes, comme les lancements et les versions de l’application, afin de nous aider à comprendre comment elle est utilisée. Vous pouvez désactiver cet envoi dans les réglages. Vos profils, réglages et statistiques restent sur votre appareil.
 
 ## Champ d’application de la présente politique
 
@@ -27,7 +28,20 @@ Ensemble, nous désignons ces deux applications par « les Applications ». « P
 
 ## Informations que nous collectons
 
-Les Applications ne nous transmettent aucune information personnelle, donnée d’utilisation, rapport de plantage ni identifiant d’appareil. Elles ne contiennent aucun SDK tiers d’analyse, de publicité ou de rapport de plantage, et ne nécessitent pas de compte.
+Les Applications ne nécessitent pas de compte et ne contiennent aucun SDK publicitaire. PrizmX pour l’App Store ne nous transmet aucune information personnelle, donnée d’utilisation, rapport de plantage ni identifiant d’appareil, et ne contient aucun SDK tiers d’analyse ou de rapport de plantage.
+
+### Données d’utilisation anonymes dans PrizmX Communauté
+
+PrizmX Communauté utilise [PostHog](https://posthog.com) pour collecter des données d’utilisation anonymes. Elles nous indiquent combien de personnes utilisent l’application, quelles versions de l’application et de macOS sont utilisées, et si une version pose des problèmes. Cette collecte est activée par défaut. Vous pouvez la désactiver à tout moment dans **Settings → Privacy → Share Anonymous Usage Data**. Lorsqu’elle est désactivée, rien n’est envoyé.
+
+Lorsqu’elle est activée, l’application envoie un événement lorsqu’elle est lancée, installée ou mise à jour, une fois par jour tant qu’elle est en cours d’exécution, lorsque TUN ou le proxy système est activé ou désactivé, et lorsqu’elle est ouverte ou placée en arrière-plan. Chaque événement comprend :
+
+- un identifiant aléatoire créé par l’application, qui n’est lié ni à votre nom, ni à votre adresse e-mail, ni à votre identifiant Apple ;
+- l’édition, la version, le build et l’identifiant de bundle de l’application ;
+- l’état activé ou non de TUN et du proxy système ;
+- le modèle de votre Mac, votre version de macOS, la taille de votre écran, votre langue, votre fuseau horaire et le fait que vous soyez connecté en Wi-Fi ou non.
+
+Les événements n’incluent ni vos profils, ni vos abonnements, ni les adresses de serveurs, ni vos identifiants, ni vos règles, ni les domaines ou applications que vous utilisez, ni votre trafic, ni votre historique des connexions. Comme tout serveur, PostHog reçoit votre adresse IP à chaque requête et peut l’utiliser pour estimer une localisation approximative. PostHog stocke les données aux États-Unis conformément à la [Politique de confidentialité de PostHog](https://posthog.com/privacy). Nous les utilisons uniquement pour améliorer PrizmX. Nous ne les vendons pas et ne les utilisons pas à des fins publicitaires.
 
 Vous pouvez le vérifier vous-même : le code source de PrizmX Communauté et de ses bibliothèques principales est public sur [GitHub](https://github.com/PrizmX).
 
@@ -52,6 +66,7 @@ En dehors du routage de votre trafic, les Applications contactent les services s
 - **Mises à jour des abonnements.** Les profils sont téléchargés depuis les URL d’abonnement que vous ajoutez.
 - **Tests de latence.** Pour mesurer la latence des nœuds, les Applications envoient de petites requêtes HTTP via chaque nœud vers une URL de test (par défaut `http://www.gstatic.com/generate_204`, ou l’URL définie dans votre profil). Pour mesurer la latence du trajet, elles ouvrent des connexions TCP vers `1.1.1.1` (Cloudflare) et `223.5.5.5` (Alibaba Cloud DNS) et résolvent `www.apple.com` à l’aide du résolveur DNS de votre système.
 - **Recherche de l’adresse IP externe.** PrizmX Communauté affiche votre adresse IP publique actuelle ainsi que sa localisation et son réseau approximatifs. Pour ce faire, il interroge `api.ipify.org` et `ipwho.is` lorsque vous vous connectez, changez de nœud ou ouvrez la vue Home.
+- **Données d’utilisation.** Si les données d’utilisation anonymes sont activées, PrizmX Communauté les envoie à PostHog (`us.i.posthog.com`), comme décrit ci-dessus.
 - **Bases de données de règles.** Si votre profil utilise des règles `GEOIP` ou `GEOSITE`, les Applications téléchargent les bases de données `geoip.metadb` et `geosite.dat` depuis GitHub (MetaCubeX/meta-rules-dat), ou depuis jsDelivr en solution de repli, et les actualisent environ une fois par semaine.
 
 ## Autorisations
@@ -80,7 +95,7 @@ Si vous nous écrivez par e-mail, nous recevons votre adresse e-mail et votre me
 
 ## Vos choix et vos droits
 
-Comme nous ne détenons aucune donnée personnelle issue des Applications, vous contrôlez directement vos données : vous pouvez les consulter ou les supprimer dans l’Application, ou supprimer l’Application avec ses données. Nous ne vendons ni ne partageons d’informations personnelles. Pour tout message que vous nous avez envoyé, vous pouvez, en utilisant l’adresse de contact ci-dessous, demander à y accéder ou à ce qu’il soit supprimé. Selon votre lieu de résidence, vous pouvez également avoir le droit d’introduire une réclamation auprès d’une autorité de protection des données.
+Comme les Applications ne nous transmettent aucune donnée personnelle, vous contrôlez directement vos données : vous pouvez les consulter ou les supprimer dans l’Application, ou supprimer l’Application avec ses données. Dans PrizmX Communauté, vous pouvez désactiver à tout moment les données d’utilisation anonymes dans les réglages. Nous ne vendons ni ne partageons d’informations personnelles. Pour tout message que vous nous avez envoyé, vous pouvez, en utilisant l’adresse de contact ci-dessous, demander à y accéder ou à ce qu’il soit supprimé. Selon votre lieu de résidence, vous pouvez également avoir le droit d’introduire une réclamation auprès d’une autorité de protection des données.
 
 ## Enfants
 

@@ -6,14 +6,14 @@ ref: privacy
 permalink: /privacy/
 title: Privacy Policy
 description: >-
-  How PrizmX handles your data: no accounts, no analytics and no tracking.
-  Profiles and statistics stay on your device.
-last_updated: 2026-10-01
+  How PrizmX handles your data: no accounts, no advertising and no tracking.
+  PrizmX Community sends anonymous usage data that you can turn off.
+last_updated: 2026-10-02
 ---
 
 PrizmX is a proxy client for Apple platforms, developed as an open-source project. This policy explains what information the PrizmX apps and this website handle, and where it goes.
 
-**In short:** PrizmX has no accounts, no analytics, no advertising and no tracking. We do not run servers that receive your data from the apps. Your profiles, settings and statistics stay on your device.
+**In short:** PrizmX has no accounts, no advertising and no tracking. PrizmX Community sends anonymous usage data, such as app launches and versions, to help us see how the app is used. You can turn this off in Settings. Your profiles, settings and statistics stay on your device.
 
 ## Who this policy covers
 
@@ -27,7 +27,20 @@ Together we call the two apps "the Apps". "PrizmX", "we" and "us" refer to the P
 
 ## Information we collect
 
-The Apps do not send us any personal information, usage data, crash reports or device identifiers. They contain no third-party analytics, advertising or crash-reporting SDKs, and they do not require an account.
+The Apps do not require an account and contain no advertising SDKs. PrizmX for App Store does not send us any personal information, usage data, crash reports or device identifiers, and contains no third-party analytics or crash-reporting SDKs.
+
+### Anonymous usage data in PrizmX Community
+
+PrizmX Community uses [PostHog](https://posthog.com) to collect anonymous usage data. It shows us how many people use the app, which versions and macOS releases are in use, and whether a release causes problems. It is on by default. You can turn it off at any time in **Settings → Privacy → Share Anonymous Usage Data**. While it is off, nothing is sent.
+
+When it is on, the app sends an event when it is launched, installed or updated, once a day while it is running, when TUN or System Proxy is turned on or off, and when it is opened or moved to the background. Each event includes:
+
+- a random identifier created by the app, not linked to your name, email address or Apple ID;
+- the app's edition, version, build and bundle identifier;
+- whether TUN and System Proxy are on;
+- your Mac model, macOS version, screen size, language, time zone and whether you are on Wi-Fi.
+
+Events do not include your profiles, subscriptions, server addresses, credentials, rules, the domains or apps you use, your traffic or your connection history. Like any server, PostHog receives your IP address with each request and may use it to estimate an approximate location. PostHog stores the data in the United States under the [PostHog Privacy Policy](https://posthog.com/privacy). We use it only to improve PrizmX. We do not sell it or use it for advertising.
 
 You can verify this yourself: the source code of PrizmX Community and its core libraries is public on [GitHub](https://github.com/PrizmX).
 
@@ -52,6 +65,7 @@ Apart from routing your traffic, the Apps contact the following services. None o
 - **Subscription updates.** Profiles are downloaded from the subscription URLs you add.
 - **Latency tests.** To measure node latency, the Apps send small HTTP requests through each node to a test URL (by default `http://www.gstatic.com/generate_204`, or the URL set in your profile). To measure path latency, they open TCP connections to `1.1.1.1` (Cloudflare) and `223.5.5.5` (Alibaba Cloud DNS) and look up `www.apple.com` with your system DNS resolver.
 - **External IP lookup.** PrizmX Community shows your current public IP address and its approximate location and network. To do so, it requests `api.ipify.org` and `ipwho.is` when you connect, switch nodes or open the Home view.
+- **Usage data.** If anonymous usage data is on, PrizmX Community sends it to PostHog (`us.i.posthog.com`), as described above.
 - **Rule databases.** If your profile uses `GEOIP` or `GEOSITE` rules, the Apps download the `geoip.metadb` and `geosite.dat` databases from GitHub (MetaCubeX/meta-rules-dat), or from jsDelivr as a fallback, and refresh them about once a week.
 
 ## Permissions
@@ -80,7 +94,7 @@ If you email us, we receive your email address and your message. We use them onl
 
 ## Your choices and rights
 
-Because we do not hold personal data from the Apps, you control your data directly: you can view or delete it in the App, or delete the App with its data. We do not sell or share personal information. For any message you have sent us, you can ask us to access or delete it using the contact address below. Depending on where you live, you may also have the right to complain to a data protection authority.
+The Apps do not send us personal data, so you control your data directly: you can view or delete it in the App, or delete the App with its data. In PrizmX Community you can turn off anonymous usage data at any time in Settings. We do not sell or share personal information. For any message you have sent us, you can ask us to access or delete it using the contact address below. Depending on where you live, you may also have the right to complain to a data protection authority.
 
 ## Children
 

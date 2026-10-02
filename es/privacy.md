@@ -6,14 +6,14 @@ ref: privacy
 permalink: /es/privacy/
 title: Política de privacidad
 description: >-
-  Cómo trata PrizmX sus datos: sin cuentas, sin analítica y sin seguimiento.
-  Los perfiles y las estadísticas permanecen en su dispositivo.
-last_updated: 2026-10-01
+  Cómo trata PrizmX sus datos: sin cuentas, sin publicidad y sin seguimiento.
+  PrizmX Community envía datos de uso anónimos que usted puede desactivar.
+last_updated: 2026-10-02
 ---
 
 PrizmX es un cliente proxy para las plataformas de Apple, desarrollado como proyecto de código abierto. Esta política explica qué información tratan las apps de PrizmX y este sitio web, y a dónde se envía.
 
-**En resumen:** PrizmX no tiene cuentas, analítica, publicidad ni seguimiento. No operamos servidores que reciban sus datos desde las apps. Sus perfiles, ajustes y estadísticas permanecen en su dispositivo.
+**En resumen:** PrizmX no tiene cuentas, publicidad ni seguimiento. PrizmX Community envía datos de uso anónimos, como los inicios y las versiones de la app, para ayudarnos a entender cómo se utiliza. Puede desactivarlo en los ajustes. Sus perfiles, ajustes y estadísticas permanecen en su dispositivo.
 
 ## A qué se aplica esta política
 
@@ -27,7 +27,20 @@ En conjunto, denominamos a las dos apps “las Apps”. “PrizmX” y “nosotr
 
 ## Información que recopilamos
 
-Las Apps no nos envían ninguna información personal, datos de uso, informes de fallos ni identificadores de dispositivo. No contienen SDK de terceros de analítica, publicidad ni informes de fallos, y no requieren una cuenta.
+Las Apps no requieren una cuenta y no contienen SDK de publicidad. PrizmX para App Store no nos envía ninguna información personal, datos de uso, informes de fallos ni identificadores de dispositivo, y no contiene SDK de terceros de analítica ni de informes de fallos.
+
+### Datos de uso anónimos en PrizmX Community
+
+PrizmX Community utiliza [PostHog](https://posthog.com) para recopilar datos de uso anónimos. Nos permiten saber cuántas personas usan la app, qué versiones de la app y de macOS se utilizan y si una versión causa problemas. Esta función está activada de forma predeterminada. Puede desactivarla en cualquier momento en **Settings → Privacy → Share Anonymous Usage Data**. Mientras esté desactivada, no se envía nada.
+
+Cuando está activada, la app envía un evento cuando se inicia, se instala o se actualiza, una vez al día mientras está en ejecución, cuando se activa o desactiva TUN o el proxy del sistema, y cuando se abre o pasa a segundo plano. Cada evento incluye:
+
+- un identificador aleatorio creado por la app, no vinculado a su nombre, su dirección de correo electrónico ni su ID de Apple;
+- la edición, la versión, la compilación y el identificador de paquete de la app;
+- si TUN y el proxy del sistema están activados;
+- el modelo de su Mac, la versión de macOS, el tamaño de la pantalla, el idioma, la zona horaria y si está conectado a una red Wi-Fi.
+
+Los eventos no incluyen sus perfiles, suscripciones, direcciones de servidores, credenciales ni reglas, ni los dominios o las apps que utiliza, su tráfico o su historial de conexiones. Como cualquier servidor, PostHog recibe su dirección IP con cada solicitud y puede utilizarla para estimar una ubicación aproximada. PostHog almacena los datos en Estados Unidos conforme a la [Política de privacidad de PostHog](https://posthog.com/privacy). Solo los utilizamos para mejorar PrizmX. No los vendemos ni los utilizamos con fines publicitarios.
 
 Puede comprobarlo usted mismo: el código fuente de PrizmX Community y de sus bibliotecas principales es público en [GitHub](https://github.com/PrizmX).
 
@@ -52,6 +65,7 @@ Además de enrutar su tráfico, las Apps se comunican con los siguientes servici
 - **Actualizaciones de suscripciones.** Los perfiles se descargan desde las URL de suscripción que usted añada.
 - **Pruebas de latencia.** Para medir la latencia de los nodos, las Apps envían pequeñas solicitudes HTTP a través de cada nodo a una URL de prueba (de forma predeterminada, `http://www.gstatic.com/generate_204`, o la URL establecida en su perfil). Para medir la latencia de la ruta, abren conexiones TCP con `1.1.1.1` (Cloudflare) y `223.5.5.5` (Alibaba Cloud DNS) y resuelven `www.apple.com` con el resolvedor DNS de su sistema.
 - **Consulta de la IP externa.** PrizmX Community muestra su dirección IP pública actual, así como su ubicación y su red aproximadas. Para ello, envía solicitudes a `api.ipify.org` y a `ipwho.is` cuando usted se conecta, cambia de nodo o abre la vista Home.
+- **Datos de uso.** Si los datos de uso anónimos están activados, PrizmX Community los envía a PostHog (`us.i.posthog.com`), tal como se describe más arriba.
 - **Bases de datos de reglas.** Si su perfil utiliza reglas `GEOIP` o `GEOSITE`, las Apps descargan las bases de datos `geoip.metadb` y `geosite.dat` desde GitHub (MetaCubeX/meta-rules-dat) o, como alternativa, desde jsDelivr, y las actualizan aproximadamente una vez por semana.
 
 ## Permisos
@@ -80,7 +94,7 @@ Si nos envía un correo electrónico, recibimos su dirección de correo electró
 
 ## Sus opciones y derechos
 
-Dado que no tenemos en nuestro poder datos personales procedentes de las Apps, usted controla sus datos directamente: puede consultarlos o eliminarlos en la App, o eliminar la App junto con sus datos. No vendemos ni compartimos información personal. En relación con cualquier mensaje que nos haya enviado, puede solicitarnos el acceso a dicho mensaje o su eliminación a través de la dirección de contacto que figura más abajo. Según dónde resida, también puede tener derecho a presentar una reclamación ante una autoridad de protección de datos.
+Las Apps no nos envían datos personales, por lo que usted controla sus datos directamente: puede consultarlos o eliminarlos en la App, o eliminar la App junto con sus datos. En PrizmX Community, puede desactivar los datos de uso anónimos en cualquier momento en los ajustes. No vendemos ni compartimos información personal. En relación con cualquier mensaje que nos haya enviado, puede solicitarnos el acceso a dicho mensaje o su eliminación a través de la dirección de contacto que figura más abajo. Según dónde resida, también puede tener derecho a presentar una reclamación ante una autoridad de protección de datos.
 
 ## Niños
 
