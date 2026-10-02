@@ -22,22 +22,24 @@ hero:
   cta_download: 下載 Mac 版
   cta_github: 在 GitHub 查看原始碼
   note: 需要 macOS %min% 或以上版本 · 已簽署並通過 Apple 公證
-  mock_label: PrizmX 選單列面板示意圖，顯示連線狀態、連出模式、系統代理、設定檔、節點與即時流量。
+  mock_label: PrizmX 選單列選單示意圖，顯示即時流量、TUN 模式、系統代理、連出模式、設定檔與節點。
 
 mock:
-  status: 已連線
-  uptime: "01:02:11"
-  modes: [Rule, Global, Direct]
-  system_proxy: System Proxy
-  profile: Profile
-  profile_value: Clash-Main
-  node: Node
-  node_value: HK-01 · 32 ms
   upload: Upload
   upload_value: 86 KB/s
   download: Download
   download_value: 1.24 MB/s
-  actions: [Open Console…, Inspector…, Settings…, Quit PrizmX]
+  tun: TUN Mode
+  uptime: "1:02:11"
+  system_proxy: System Proxy
+  outbound_mode: Outbound Mode
+  profile: "Profile: Clash-Main"
+  node: "Node: HK-01"
+  actions:
+    - { title: Open Console…, key: ⌘0 }
+    - { title: Inspector…, key: ⌘I }
+    - { title: Settings…, key: "⌘," }
+  quit: { title: Quit PrizmX, key: ⌘Q }
 
 features:
   eyebrow: 功能

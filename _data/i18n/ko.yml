@@ -22,22 +22,24 @@ hero:
   cta_download: Mac용 다운로드
   cta_github: GitHub에서 소스 보기
   note: macOS %min% 이상 필요 · 서명 및 공증 완료
-  mock_label: 연결 상태, 아웃바운드 모드, 시스템 프록시, 프로필, 노드, 실시간 트래픽을 보여 주는 PrizmX 메뉴 막대 패널 예시 이미지.
+  mock_label: 실시간 트래픽, TUN 모드, 시스템 프록시, 아웃바운드 모드, 프로필, 노드를 보여 주는 PrizmX 메뉴 막대 메뉴 예시 이미지.
 
 mock:
-  status: 연결됨
-  uptime: "01:02:11"
-  modes: [Rule, Global, Direct]
-  system_proxy: System Proxy
-  profile: Profile
-  profile_value: Clash-Main
-  node: Node
-  node_value: HK-01 · 32 ms
   upload: Upload
   upload_value: 86 KB/s
   download: Download
   download_value: 1.24 MB/s
-  actions: [Open Console…, Inspector…, Settings…, Quit PrizmX]
+  tun: TUN Mode
+  uptime: "1:02:11"
+  system_proxy: System Proxy
+  outbound_mode: Outbound Mode
+  profile: "Profile: Clash-Main"
+  node: "Node: HK-01"
+  actions:
+    - { title: Open Console…, key: ⌘0 }
+    - { title: Inspector…, key: ⌘I }
+    - { title: Settings…, key: "⌘," }
+  quit: { title: Quit PrizmX, key: ⌘Q }
 
 features:
   eyebrow: 기능

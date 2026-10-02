@@ -21,22 +21,24 @@ hero:
   cta_download: Download for Mac
   cta_github: View source on GitHub
   note: Requires macOS %min% or later · Signed and notarized
-  mock_label: Illustration of the PrizmX menu bar panel showing connection status, outbound mode, system proxy, profile, node and live traffic.
+  mock_label: Illustration of the PrizmX menu bar menu showing live traffic, TUN mode, system proxy, outbound mode, profile and node.
 
 mock:
-  status: Connected
-  uptime: "01:02:11"
-  modes: [Rule, Global, Direct]
-  system_proxy: System Proxy
-  profile: Profile
-  profile_value: Clash-Main
-  node: Node
-  node_value: HK-01 · 32 ms
   upload: Upload
   upload_value: 86 KB/s
   download: Download
   download_value: 1.24 MB/s
-  actions: [Open Console…, Inspector…, Settings…, Quit PrizmX]
+  tun: TUN Mode
+  uptime: "1:02:11"
+  system_proxy: System Proxy
+  outbound_mode: Outbound Mode
+  profile: "Profile: Clash-Main"
+  node: "Node: HK-01"
+  actions:
+    - { title: Open Console…, key: ⌘0 }
+    - { title: Inspector…, key: ⌘I }
+    - { title: Settings…, key: "⌘," }
+  quit: { title: Quit PrizmX, key: ⌘Q }
 
 features:
   eyebrow: Features

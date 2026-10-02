@@ -1,4 +1,4 @@
-// Hero and the menu bar panel illustration.
+// Hero and the menu bar dropdown illustration.
 
 .hero {
   position: relative;
@@ -79,15 +79,17 @@
   font-size: 0.875rem;
 }
 
-// Menu bar panel illustration — sized like the real 320pt panel.
+// Menu bar dropdown illustration — sized like the real ~310pt menu.
 
 .hero-visual {
   position: relative;
   justify-self: center;
-  width: min(100%, 380px);
+  width: min(100%, 340px);
   font-size: 13px;
   line-height: 1.35;
   user-select: none;
+  // The app uses the system font with monospaced digits, not a mono font.
+  font-variant-numeric: tabular-nums;
 
   @media (max-width: 900px) {
     text-align: start;
@@ -110,13 +112,34 @@
   color: var(--text);
 }
 
-.mock-menubar-glyph {
-  display: grid;
-  place-items: center;
-  width: 28px;
+.mock-menubar-item {
+  display: flex;
+  align-items: center;
+  gap: 3px;
   height: 22px;
+  padding-inline: 6px;
   border-radius: 6px;
   background: color-mix(in srgb, var(--text) 12%, transparent);
+}
+
+// Upload over download beside the icon (MenuBarSpeedImage).
+.mock-menubar-speed {
+  display: grid;
+  font-size: 8.5px;
+  font-weight: 500;
+  line-height: 1.15;
+  text-align: end;
+
+  span {
+    display: flex;
+    justify-content: space-between;
+    gap: 2px;
+    min-width: 7ch;
+  }
+
+  i {
+    font-style: normal;
+  }
 }
 
 .mock-menubar-dots {
@@ -136,107 +159,72 @@
   font-variant-numeric: tabular-nums;
 }
 
-.mock-panel {
-  display: grid;
-  gap: 12px;
-  padding: 14px;
-  border-radius: 16px;
+// Native NSMenu look: checkmark column, trailing badge / key / chevron.
+.mock-menu {
+  padding: 5px;
+  border-radius: 12px;
   background: color-mix(in srgb, var(--surface) 88%, transparent);
   border: 1px solid var(--border);
   box-shadow: var(--shadow-lg);
   backdrop-filter: blur(24px) saturate(160%);
   -webkit-backdrop-filter: blur(24px) saturate(160%);
   color: var(--text);
-}
 
-.mock-head {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-
-  strong {
-    display: block;
-    font-size: 14px;
+  hr {
+    margin: 5px 10px;
+    border: 0;
+    border-top: 1px solid var(--border);
   }
 }
 
-.mock-caption {
-  display: block;
-  color: var(--text-muted);
-  font-size: 11px;
-}
-
-.mock-switch {
-  position: relative;
-  width: 38px;
-  height: 22px;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--text) 18%, transparent);
-
-  &::after {
-    content: "";
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    background: #fff;
-    box-shadow: 0 1px 3px rgb(0 0 0 / 0.3);
-  }
-
-  &.is-on {
-    background: var(--brand);
-
-    &::after {
-      left: 18px;
-    }
-  }
-
-  &.is-small {
-    width: 30px;
-    height: 18px;
-
-    &::after {
-      width: 14px;
-      height: 14px;
-    }
-
-    &.is-on::after {
-      left: 14px;
-    }
-  }
-}
-
-.mock-seg {
+.mock-traffic {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  padding: 2px;
-  border-radius: 8px;
-  background: color-mix(in srgb, var(--text) 8%, transparent);
+  gap: 8px;
+  padding: 6px 9px;
+}
 
-  span {
-    padding: 4px 0;
+.mock-items {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    height: 24px;
+    padding-inline: 22px 10px;
     border-radius: 6px;
-    text-align: center;
+  }
+
+  .is-checked::before {
+    content: "✓";
+    position: absolute;
+    left: 7px;
     font-size: 12px;
-    font-weight: 500;
+    font-weight: 600;
   }
 
-  .is-on {
-    background: var(--surface);
-    box-shadow: 0 1px 3px rgb(0 0 0 / 0.15);
+  .has-submenu::after {
+    content: "";
+    width: 6px;
+    height: 6px;
+    margin-inline-end: 2px;
+    border-top: 1.5px solid var(--text-muted);
+    border-right: 1.5px solid var(--text-muted);
+    transform: rotate(45deg);
   }
 }
 
-.mock-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.mock-value {
+.mock-trail {
   color: var(--text-muted);
+}
+
+kbd.mock-trail {
+  font-family: inherit;
+  font-size: inherit;
 }
 
 .mock-speed {
@@ -275,12 +263,4 @@
   fill: color-mix(in srgb, #2dd4bf 40%, transparent);
   stroke: #2dd4bf;
   stroke-width: 1.2;
-}
-
-.mock-actions li {
-  padding: 3px 0;
-
-  &:last-child {
-    color: #e5484d;
-  }
 }
